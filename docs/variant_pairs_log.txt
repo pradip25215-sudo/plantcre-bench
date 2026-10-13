@@ -1,0 +1,58 @@
+WT rows=905 (unique base=905) | mutant rows=753 (unique base=753)
+mutants without a matching WT: 12
+
+=== mutation size (bases changed) ===
+count    741.0
+mean       4.7
+std        2.3
+min        2.0
+25%        3.0
+50%        4.0
+75%        6.0
+max       14.0
+pairs with NO difference (should be 0): 0
+
+=== measured effects: fraction of pairs where shuffling LOWERS strength ===
+light  n= 738 | fraction delta<0 = 0.60 | median delta = -0.11
+dark   n= 726 | fraction delta<0 = 0.64 | median delta = -0.15
+warm   n= 733 | fraction delta<0 = 0.61 | median delta = -0.13
+cold   n= 735 | fraction delta<0 = 0.63 | median delta = -0.14
+maize  n= 735 | fraction delta<0 = 0.57 | median delta = -0.06
+
+=== median delta per TF family (light, maize) ===
+           delta_light  delta_maize
+tf_family                          
+TF_22            -0.96        -0.07
+TF_15            -0.54        -0.11
+TF_2             -0.49        -0.14
+TF_42            -0.48         0.00
+TF_21            -0.30        -0.13
+TF_7             -0.12        -0.15
+TF_9             -0.10        -0.01
+TF_6             -0.10        -0.25
+TF_59            -0.06        -0.04
+TF_25            -0.06         0.02
+TF_19             0.02        -0.04
+TF_13             0.04        -0.39
+TF_68             0.05         0.05
+TF_29             0.06         0.04
+TF_35             0.06         0.03
+TF_33             0.17         0.18
+
+WT found in main ACR library: 673 of 741
+WT split in main library: {'train': 540, 'val': 70, nan: 68, 'test': 63}
+WT sequence identical to library sequence: 100.0%
+mutant sequences that also appear in the main library (should be 0): 0
+
+=== assay reproducibility: WT strength, validation library vs ACR library ===
+light  n= 673 | Pearson r=0.958 (R2=0.917) | Spearman rho=0.964
+dark   n= 670 | Pearson r=0.919 (R2=0.844) | Spearman rho=0.921
+warm   n= 672 | Pearson r=0.926 (R2=0.858) | Spearman rho=0.920
+cold   n= 672 | Pearson r=0.916 (R2=0.838) | Spearman rho=0.918
+maize  n= 672 | Pearson r=0.917 (R2=0.840) | Spearman rho=0.886
+
+Saved 741 pairs -> /home/pradip/plantcre/data/processed/variant_pairs.parquet
+
+=== insertion library: 22,136 rows on 50 random backgrounds ===
+all-'none' constructs present: False
+same backgrounds also measured in: {'evolution: round = 12, objective = dark, mutations/round = 1': 50, 'evolution: round = 12, objective = light-specific, mutations/round = 1': 50, 'evolution: round = 4, objective = maize, mutations/round = 3': 50, 'evolution: round = 4, objective = maize-specific, mutations/round = 3': 50, 'evolution: round = 6, objective = cold-specific, mutations/round = 1': 50}
