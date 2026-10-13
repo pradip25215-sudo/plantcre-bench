@@ -4,7 +4,6 @@ Outputs (data/processed/):
   promoters.parquet    Jores 2021 core promoters (leaf + proto strength, per-assay split)
   enhancers.parquet    plantGREP ACR library (5 conditions, original split, orientation)
   terminators.parquet  Gorjifard 2024 terminators (tobacco + maize strength, split)
-  tfval_raw.parquet    plantGREP TF-site validation library, parsed but not yet paired
 """
 from pathlib import Path
 
@@ -94,37 +93,5 @@ print(f"synthetic/control sequences: {T['is_synthetic_control'].sum():,}")
 check_seqs(T, "terminators")
 exact_leak(T, "split", "terminators")
 T.to_parquet(OUT / "terminators.parquet", index=False)
-
-# ---------------- 4. TF-site validation library (parse only) ----------------
-print("\n######## TF VALIDATION LIBRARY ########")
-X = EXT / "plantgrep_enhancers/data/supplementary_data/SupplementaryData3.xlsx"
-raw = pd.read_excel(X, sheet_name="validation library", header=None)
-r = raw.index[raw[0].astype(str).str.strip() == "base sequence"][0]
-h1, h2 = raw.iloc[r].tolist(), raw.iloc[r + 1].tolist()
-print("header row 1:", h1)
-print("header row 2:", h2)
-has_sub = pd.isna(h2[0])
-names = []
-for a, b in zip(h1, h2):
-    a = str(a).strip()
-    if a.startswith("log2") and has_sub:
-        names.append("log2_" + str(b).strip())
-    else:
-        names.append(a.replace(" ", "_").replace("(%)", "pct").strip("_"))
-tf = raw.iloc[r + (2 if has_sub else 1):].copy()
-tf.columns = names
-tf = tf.dropna(how="all")
-for c in tf.columns:
-    if c.startswith("log2_") or c.startswith("GC"):
-        tf[c] = pd.to_numeric(tf[c], errors="coerce")
-    else:
-        tf[c] = tf[c].astype(str)
-print(f"rows={len(tf):,} | columns={list(tf.columns)}")
-print("experiment values:", tf["experiment"].value_counts().head(20).to_dict())
-show = tf.head(8).copy()
-for c in show.columns:
-    show[c] = show[c].astype(str).str.slice(0, 35)
-print(show.to_string())
-tf.to_parquet(OUT / "tfval_raw.parquet", index=False)
 
 print("\nDONE. Files written to", OUT)
