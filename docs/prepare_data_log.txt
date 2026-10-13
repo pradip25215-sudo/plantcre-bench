@@ -1,0 +1,51 @@
+
+######## PROMOTERS ########
+leaf: rows=72,158 | duplicated (sp, gene, sequence) = 0
+sp        At     Sb     Zm
+set                       
+test    1686   2467   3001
+train  15050  22287  27667
+proto: rows=75,808 | duplicated (sp, gene, sequence) = 0
+sp        At     Sb     Zm
+set                       
+test    1690   2638   3267
+train  15766  23051  29396
+merged rows=76,728 | in both assays=71,238 | split differs between leaf and proto=12,776
+[promoters] rows=76,728 | length min/median/max = 170/170/170 | sequences with non-ACGT = 0
+[promoters] test sequences IDENTICAL to a train sequence (split_leaf): 0 of 7,154 (0.00%)
+[promoters] test sequences IDENTICAL to a train sequence (split_proto): 0 of 7,595 (0.00%)
+
+######## ENHANCERS ########
+species     At     Sb     Sl     Zm  other
+split                                     
+test     10586   6033   5069   8893   2719
+train    85196  49576  39105  73585  22952
+val      10699   6265   4904   8993   2767
+orientation counts: {'fwd': 169663, 'rev': 167679}
+base sequences whose fwd/rev copies sit in DIFFERENT splits: 0
+examples of species='other' ids: ['35S_fwd', '35S(GG)_fwd', 'AB80_fwd', 'Cab-1_fwd', 'Solyc01g009560-1_fwd', 'Solyc01g009560-1.5_fwd', 'Solyc01g009560-10_fwd', 'Solyc01g009560-10.5_fwd', 'Solyc01g009560-11_fwd', 'Solyc01g009560-11.5_fwd']
+[enhancers] rows=337,342 | length min/median/max = 170/170/170 | sequences with non-ACGT = 0
+[enhancers] test sequences IDENTICAL to a train sequence (split): 0 of 33,300 (0.00%)
+
+######## TERMINATORS ########
+species  Arabidopsis   GC  Maize
+split                           
+test            2310   86   2913
+train          21050  833  26217
+synthetic/control sequences: 2,199
+[terminators] rows=53,409 | length min/median/max = 170/170/170 | sequences with non-ACGT = 0
+[terminators] test sequences IDENTICAL to a train sequence (split): 0 of 5,309 (0.00%)
+
+######## TF VALIDATION LIBRARY ########
+header row 1: ['base sequence', 'experiment', 'log2(enhancer strength)', 'log2(enhancer strength)', 'log2(enhancer strength)', 'log2(enhancer strength)', 'log2(enhancer strength)', 'GC content (%)', 'sequence']
+header row 2: ['base sequence', 'experiment', 'light', 'dark', 'warm', 'cold', 'maize', 'GC content (%)', 'sequence']
+rows=35,348 | columns=['base_sequence', 'experiment', 'log2(enhancer_strength)', 'log2(enhancer_strength)', 'log2(enhancer_strength)', 'log2(enhancer_strength)', 'log2(enhancer_strength)', 'GC_content_pct', 'sequence']
+experiment values: {'validation of ACR sequence library': 1798, 'unmodified control': 905, 'evolution: round = 12, objective = dark, mutations/round = 1': 149, 'evolution: round = 4, objective = cold-specific, mutations/round = 3': 148, 'evolution: round = 6, objective = cold-specific, mutations/round = 1': 148, 'evolution: round = 6, objective = dark-specific, mutations/round = 2': 148, 'evolution: round = 6, objective = maize-specific, mutations/round = 2': 148, 'evolution: round = 6, objective = warm-specific, mutations/round = 2': 148, 'evolution: round = 12, objective = cold-specific, mutations/round = 1': 147, 'evolution: round = 4, objective = maize-specific, mutations/round = 3': 147, 'evolution: round = 6, objective = cold-specific, mutations/round = 2': 147, 'evolution: round = 6, objective = dark, mutations/round = 2': 147, 'evolution: round = 6, objective = light-specific, mutations/round = 1': 147, 'evolution: round = 6, objective = light-specific, mutations/round = 2': 147, 'evolution: round = 6, objective = maize, mutations/round = 2': 147, 'evolution: round = 6, objective = warm-specific, mutations/round = 1': 147, 'evolution: round = 12, objective = dark-specific, mutations/round = 1': 146, 'evolution: round = 12, objective = light-specific, mutations/round = 1': 146, 'evolution: round = 12, objective = maize-specific, mutations/round = 1': 146, 'evolution: round = 3, objective = cold-specific, mutations/round = 2': 146}
+Traceback (most recent call last):
+  File "/home/pradip/plantcre/scripts/prepare_data.py", line 126, in <module>
+    show[c] = show[c].astype(str).str.slice(0, 35)
+              ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/pradip/miniforge3/envs/plantcre/lib/python3.11/site-packages/pandas/core/generic.py", line 6194, in __getattr__
+    return object.__getattribute__(self, name)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'DataFrame' object has no attribute 'str'. Did you mean: 'std'?

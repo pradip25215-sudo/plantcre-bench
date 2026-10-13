@@ -1,0 +1,140 @@
+
+====================================================================================================
+jores2021_promoters/CNN/CNN_train_leaf.tsv
+====================================================================================================
+rows: 65,004 | columns: 5
+columns: ['set', 'sp', 'gene', 'sequence', 'enrichment']
+     set  sp             gene                                     sequence           enrichment
+0  train  Sb  ENSRNA049481990  CGTTTGGGTATGGACATTTAGACTTGTCGTGTTCCTGATG...  -0.2166846610255508
+1  train  At        AT2G28056  GTTAAGTACCATATAGATGATATTTGTTAAGTAGTAAGTC...     1.68783163047235
+2  train  Sb  ENSRNA049996023  TGCAAGCACTTCACGAGGCACTATTTTGAGAGCTTTTGTG...   1.3427990008982165
+
+====================================================================================================
+jores2021_promoters/CNN/CNN_test_leaf.tsv
+====================================================================================================
+rows: 7,154 | columns: 5
+columns: ['set', 'sp', 'gene', 'sequence', 'enrichment']
+    set  sp             gene                                     sequence           enrichment
+0  test  At        AT5G03425  TGAGTGAAGGCAGAATTGACCCATGCAGCTTCCTTTCTTT...  -0.5374512291279694
+1  test  Sb  ENSRNA049996419  GTATATATATAGGCGAGGAGAGTTAAGGCCAAGGGAGCCA...    4.108127207241299
+2  test  Zm  ENSRNA049997541  CTAAGCAGAGGAGCTAGCTAGGAAGAGGTACGGTGCTGGC...  -0.7184191042960637
+
+====================================================================================================
+jores2021_promoters/CNN/CNN_train_proto.tsv
+====================================================================================================
+rows: 68,213 | columns: 5
+columns: ['set', 'sp', 'gene', 'sequence', 'enrichment']
+     set  sp             gene                                     sequence           enrichment
+0  train  Sb  ENSRNA049481990  CGTTTGGGTATGGACATTTAGACTTGTCGTGTTCCTGATG...  -0.1836687268543685
+1  train  At        AT5G03425  TGAGTGAAGGCAGAATTGACCCATGCAGCTTCCTTTCTTT...    -1.61241074389272
+2  train  At        AT2G28056  GTTAAGTACCATATAGATGATATTTGTTAAGTAGTAAGTC...    -2.88633680469119
+
+====================================================================================================
+jores2021_promoters/CNN/CNN_test_proto.tsv
+====================================================================================================
+rows: 7,595 | columns: 5
+columns: ['set', 'sp', 'gene', 'sequence', 'enrichment']
+    set  sp             gene                                     sequence           enrichment
+0  test  Zm  ENSRNA049997541  CTAAGCAGAGGAGCTAGCTAGGAAGAGGTACGGTGCTGGC...   0.3665358390308574
+1  test  Sb  ENSRNA049996959  TGTTCTCCATCTGACCTGTTGCTGTCTTTCTCCACCTGAT...  -0.1015242966365591
+2  test  Zm  ENSRNA049997348  GACTCGTGTTCCACCTCGGATCAGGTAGGCGCGGCGCGGA...  -0.4879397699674475
+
+====================================================================================================
+jores2021_promoters/CNN/evolution_data.tsv
+====================================================================================================
+rows: 9,610 | columns: 7
+columns: ['round', 'origin', 'opt_for', 'sequence', 'pred_leaf', 'pred_proto', 'REsite']
+  round        origin opt_for                                     sequence           pred_leaf           pred_proto REsite
+0     0     synA1(WT)   start  TATGGAAATAATACTATTTCAGCCAGACCGACAACAGCTG...  0.6382448673248291   -1.175797462463379  False
+1     0  synA1(+TATA)   start  TATGGAAATAATACTATTTCAGCCAGACCGACAACAGCTG...  3.1515347957611084   1.1299335956573486  False
+2     0   synA1(+Inr)   start  TATGGAAATAATACTATTTCAGCCAGACCGACAACAGCTG...  0.6574656963348389  -0.8418991565704346  False
+
+====================================================================================================
+jores2021_promoters/data/promoter_annotation/Maize_all_promoters_unique.tsv
+====================================================================================================
+rows: 38,636 | columns: 6
+columns: ['gene', 'type', 'sequence', 'strand', 'UTR', 'mutations']
+              gene   type                                     sequence strand   UTR mutations
+0  ENSRNA049454868  miRNA  CCGAGGATATGTTCGATGCTGCAGCCTGCAAGGGTCGTTT...      +  True       nan
+1  ENSRNA049454997  miRNA  ACTTCAGCCATGAACTAATAAACACCTCGTAAGCCTGACT...      -  True       nan
+2  ENSRNA049455527  miRNA  TTTGTTGCGGCGAGCAGTGCTGCCTTCGCAGCCTCGTCAG...      -  True       nan
+
+====================================================================================================
+plantgrep_enhancers/data/modelling_data/modelling_data_tamsACR.tsv.gz
+====================================================================================================
+rows: 337,342 | columns: 11
+columns: ['id', 'enrichment_cold', 'enrichment_dark', 'enrichment_light', 'enrichment_warm', 'enrichment_maize', 'enrichment_maize_rep1', 'enrichment_maize_rep2', 'enrichment_maize_rep3', 'sequence', 'set']
+            id     enrichment_cold      enrichment_dark   enrichment_light     enrichment_warm     enrichment_maize enrichment_maize_rep1 enrichment_maize_rep2 enrichment_maize_rep3                                     sequence    set
+0      35S_fwd   6.251381062138865    6.208052952428612  6.546976660047306   6.561181876045589     4.37526253125215     4.839517815616008     4.189314255468132     4.096955522672311  GGAAAGGCCATCGTTGAAGATGCCTCTGCCGACAGTGGTC...  train
+1  35S(GG)_fwd   5.746394055195931     6.24190352846297   6.45135598350422    7.04249365057638    4.416647374984247     5.014415506726248     4.098615945176395     4.136910673050096  GGAAAGGCCATCGTTGAAGATGCCTCTGCCGACAGTGGTC...  train
+2     AB80_fwd  2.0540185656237924  -0.8200159260825876  2.991942676562086  1.7135744230429386  -1.6510747895056983   -1.7701375510798465   -1.5355368729405292     -1.64754994449672  ATATATACCTTACACTTCTGAGTTAGAGAAGCAGAGCCCC...    val
+
+====================================================================================================
+plantgrep_enhancers/data/modelling_data/plantGREP_predictions.tsv
+====================================================================================================
+rows: 33,300 | columns: 10
+columns: ['predictions_0', 'predictions_1', 'predictions_2', 'predictions_3', 'predictions_4', 'target_0', 'target_1', 'target_2', 'target_3', 'target_4']
+  predictions_0 predictions_1 predictions_2 predictions_3 predictions_4     target_0    target_1     target_2    target_3     target_4
+0     1.2858543     1.6218088     1.7482848     1.0245873    -0.7776252    2.3855987   2.8263645    2.2824473    2.512109  -0.50865257
+1     1.0851576       2.04018     1.4683068     0.9213124   -0.79415965    1.3889623   1.5940887    1.7377455   1.0215622    0.3358595
+2  -0.104322396   -0.18693309     0.3937555   -0.23279475    -1.5148667  -0.35123816  -1.5789713  -0.20092426  0.32102507   -1.1978796
+
+====================================================================================================
+plantgrep_enhancers/data/modelling_data/lm_kmers_predictions.tsv.gz
+====================================================================================================
+rows: 33,300 | columns: 12
+columns: ['id', 'orientation', 'enrichment_cold', 'enrichment_dark', 'enrichment_light', 'enrichment_warm', 'enrichment_maize', 'prediction_cold', 'prediction_dark', 'prediction_light', 'prediction_warm', 'prediction_maize']
+               id orientation     enrichment_cold     enrichment_dark     enrichment_light      enrichment_warm     enrichment_maize      prediction_cold      prediction_dark     prediction_light      prediction_warm     prediction_maize
+0        At-10003         fwd   2.512108967309506  2.8263645114632965   2.3855985472422385    2.282447427374679  -0.5086525825234703   0.6693152745075521   1.1526516552700117   1.0572754655982448    1.434396469809503  -1.2112794751501197
+1  At-1001(Bur-0)         fwd   1.021562257257744   1.594088627917037    1.388962284430371    1.737745525674166   0.3358595063969962  -0.7925404129896015   0.0366403221892945  -0.6545863972660326  -0.0555939737050801   -1.394632620823936
+2        At-10019         fwd  0.3210250756632048  -1.578971286186556  -0.3512381731566513  -0.2009242621095718  -1.1978795681156018  -0.5943585432517859  -0.5496671028553193  -0.4740385918368859  -0.0979284582748945  -1.7653367301135054
+
+====================================================================================================
+plantgrep_enhancers/data/modelling_data/evolution_data.tsv.gz
+====================================================================================================
+rows: 39,750 | columns: 11
+columns: ['round', 'objective', 'muts_per_round', 'id', 'sequence', 'light', 'dark', 'warm', 'cold', 'maize', 'BsaI']
+  round objective muts_per_round                   id                                     sequence                light                 dark                 warm                 cold                maize   BsaI
+0     0     start              0          Zm-5384_fwd  ATCAATCTTTCCAACGCAAACACAGCCAGCGGCCCAGTCT...  -0.9595986008644104  -0.5445280075073242  -0.5078347325325012  -1.0146691799163818    2.648112535476685  False
+1     0     start              0  At-30004(Bur-0)_rev  AGTCCAGCTTTGATTTTTATAGATCAAGCTTGTTCTTGCA...  -0.7691456079483032  -0.4605776667594909  -0.3556875586509704  -0.8572670221328735  -1.0900689363479614  False
+2     0     start              0     At-43265(PP)_rev  AACTGTCATGGGCTATACAAGAAAGACGGACGTTCATGGA...  -0.8053268194198608  -1.0995522737503052  -0.3433315753936767  -0.8748154640197754  -1.2428734302520752  False
+
+====================================================================================================
+gorjifard2024_terminators/CNN/terminator_data.tsv
+====================================================================================================
+rows: 53,409 | columns: 6
+columns: ['id', 'species', 'sequence', 'enrichment_tobacco', 'enrichment_maize', 'set']
+                            id      species                                     sequence   enrichment_tobacco     enrichment_maize    set
+0    Arabidopsis_ACGT_random_1  Arabidopsis  ATGCGTTTCAATGGAAATCCGCAAGAAATAATTGAGTTAT...  -2.4595873085256192   -1.167648214561373  train
+1   Arabidopsis_ACGT_random_10  Arabidopsis  AGTTGCGTTCACAGGTTTATTACTTCCTCTAGAATTATAC...   -4.329809076494767   -2.771539089730167  train
+2  Arabidopsis_ACGT_random_100  Arabidopsis  TCAATTCACAAAGTCTATTTCTGTTCGATATTGTTGACAT...   -3.759715525848364  -2.3905821666086267  train
+
+====================================================================================================
+gorjifard2024_terminators/CNN/evolution_data.tsv
+====================================================================================================
+rows: 6,882 | columns: 8
+columns: ['round', 'species', 'origin', 'opt_for', 'sequence', 'prediction_tobacco', 'prediction_maize', 'REsite']
+  round      species     origin  opt_for                                     sequence   prediction_tobacco     prediction_maize REsite
+0     1  Arabidopsis  AT4G27230  tobacco  AGTCTTGACTCCACTTCTTTAGCATTGTTCACTGATTCAT...   -3.039506435394287   -2.222399950027466  False
+1     1  Arabidopsis  AT4G24650  tobacco  CAGAGAAAGATATGGAACAAGGAAGTGTTGGAACCGTGTG...   -1.538171410560608   -1.403586506843567  False
+2     1  Arabidopsis  AT2G02320  tobacco  GGTAATGAAATGCCCTAGAAATTAAACTCCCTTTTACCTG...  -1.5441646575927734  -1.3953546285629272  False
+
+====================================================================================================
+SupplementaryData3.xlsx sheets
+====================================================================================================
+
+--- sheet: validation library | columns: ['Supplementary Data 3 | Plant STARR-seq results for validation library.', 'Unnamed: 1', 'Unnamed: 2', 'Unnamed: 3', 'Unnamed: 4', 'Unnamed: 5', 'Unnamed: 6', 'Unnamed: 7', 'Unnamed: 8']
+  Supplementary Data 3 | Plant STARR-seq results for validation library.  Unnamed: 1               Unnamed: 2               Unnamed: 3               Unnamed: 4               Unnamed: 5               Unnamed: 6      Unnamed: 7 Unnamed: 8
+0                            Test sequences (170 bp) with either shuf...         nan                      nan                      nan                      nan                      nan                      nan             nan        nan
+1                                                                    nan         nan                      nan                      nan                      nan                      nan                      nan             nan        nan
+2                                                          base sequence  experiment  log2(enhancer strength)  log2(enhancer strength)  log2(enhancer strength)  log2(enhancer strength)  log2(enhancer strength)  GC content (%)   sequence
+
+====================================================================================================
+TFval_sequences.fa (first 6 lines)
+====================================================================================================
+>Zm-45943_TF_2_WT
+TCTCTGGCAGTGGGCACCAGGAACTGAGCATGAGCATTGT...
+>Zm-45943_TF_2_shuffle
+TCTCTGGCAGTGGGCACCAGGAACTGAGCATGAGCATTGT...
+>At-7591(Bur-0)_TF_2_WT
+CACTAAACTAATAGTATATGCAACTAGCTAGGTAGCAGAT...
