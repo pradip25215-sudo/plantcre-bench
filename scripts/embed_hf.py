@@ -44,11 +44,16 @@ args = ap.parse_args()
 
 # pin the exact model version so the paper numbers can be reproduced later
 def get_sha(name):
-    """Pinned model version. Read it from the local cache first (no network = nothing to hang on).
-    Only ask HuggingFace if the model was never downloaded on this machine."""
-    ref = Path.home() / ".cache/huggingface/hub" / ("models--" + name.replace("/", "--")) / "refs/main"
+    """Pinned model version, from the local cache first (no network = nothing to hang on).
+    refs/main only exists if the model was downloaded without a pinned revision, so we also
+    check the snapshots folder (one folder per downloaded version)."""
+    root = Path.home() / ".cache/huggingface/hub" / ("models--" + name.replace("/", "--"))
+    ref = root / "refs/main"
     if ref.exists():
         return ref.read_text().strip()
+    snaps = sorted((root / "snapshots").glob("*"), key=lambda d: d.stat().st_mtime) if (root / "snapshots").exists() else []
+    if snaps:
+        return snaps[-1].name
     return HfApi().model_info(name, timeout=30).sha
 
 
