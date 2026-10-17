@@ -1,0 +1,4 @@
+min 10 | @34: recall=1.0000 same=True | @40: recall=1.0000 same=True | @60: recall=1.0000 same=True
+min 15 | @34: recall=0.9904 same=False | @40: recall=0.9934 same=True | @60: recall=1.0000 same=True
+min 20 | @34: recall=0.9880 same=False | @40: recall=0.9934 same=True | @60: recall=1.0000 same=True
+min 25 | @34: recall=0.9833 same=False | @40: recall=0.9934 same=True | @60: recall=1.0000 same=True

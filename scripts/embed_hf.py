@@ -60,8 +60,13 @@ def get_sha(name):
 print("loading...", flush=True)
 sha = get_sha(args.model)
 print(f"model={args.model} | revision={sha}", flush=True)
-tok = AutoTokenizer.from_pretrained(args.model, revision=sha, trust_remote_code=True)
-model = AutoModelForMaskedLM.from_pretrained(args.model, revision=sha, trust_remote_code=True).cuda().eval()
+# load straight from the local snapshot folder when we have it: a local path means
+# transformers never talks to the Hub (no version checks, no safetensors auto-conversion)
+snap = Path.home() / ".cache/huggingface/hub" / ("models--" + args.model.replace("/", "--")) / "snapshots" / sha
+src, rev = (str(snap), None) if snap.exists() else (args.model, sha)
+print(f"loading weights from: {src}", flush=True)
+tok = AutoTokenizer.from_pretrained(src, revision=rev, trust_remote_code=True)
+model = AutoModelForMaskedLM.from_pretrained(src, revision=rev, trust_remote_code=True).cuda().eval()
 
 n_layers = model.config.num_hidden_layers
 layers = sorted(set(range(args.every, n_layers + 1, args.every)) | {n_layers})
