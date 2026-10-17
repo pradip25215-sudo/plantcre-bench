@@ -44,13 +44,12 @@ args = ap.parse_args()
 
 # pin the exact model version so the paper numbers can be reproduced later
 def get_sha(name):
-    """Pinned model version: ask HuggingFace (30 s limit), else read it from the local cache."""
-    try:
-        return HfApi().model_info(name, timeout=30).sha
-    except Exception as e:
-        print(f"HF API didn't answer ({type(e).__name__}), using local cache", flush=True)
-        ref = Path.home() / ".cache/huggingface/hub" / ("models--" + name.replace("/", "--")) / "refs/main"
+    """Pinned model version. Read it from the local cache first (no network = nothing to hang on).
+    Only ask HuggingFace if the model was never downloaded on this machine."""
+    ref = Path.home() / ".cache/huggingface/hub" / ("models--" + name.replace("/", "--")) / "refs/main"
+    if ref.exists():
         return ref.read_text().strip()
+    return HfApi().model_info(name, timeout=30).sha
 
 
 print("loading...", flush=True)
