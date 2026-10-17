@@ -6,6 +6,6 @@ MIN=$1
 H=~/plantcre/data/homology
 for d in terminators promoters enhancers; do
   echo "################ $d  ($(date))"
-  ~/plantcre/scripts/blast_all.sh $H/${d}_all.fa ${d}_min${MIN} 16 $MIN 10000
+  ~/plantcre/scripts/blast_all.sh $H/${d}_all.fa ${d}_min${MIN} 24 $MIN 10000
 done
 echo "FULL HOMOLOGY DONE ($(date))"
