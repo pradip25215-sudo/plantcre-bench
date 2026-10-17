@@ -40,6 +40,7 @@ ap.add_argument("--tag", default="ntv2_100m")
 ap.add_argument("--datasets", nargs="+", default=["promoters", "terminators", "variants", "enhancers"])
 ap.add_argument("--every", type=int, default=2, help="save every k-th layer (last layer always saved)")
 ap.add_argument("--batch", type=int, default=256)
+ap.add_argument("--local-path", default=None, help="snapshot folder from snapshot_download(); skips the Hub entirely")
 args = ap.parse_args()
 
 # pin the exact model version so the paper numbers can be reproduced later
@@ -58,11 +59,11 @@ def get_sha(name):
 
 
 print("loading...", flush=True)
-sha = get_sha(args.model)
+sha = Path(args.local_path).name if args.local_path else get_sha(args.model)
 print(f"model={args.model} | revision={sha}", flush=True)
 # load straight from the local snapshot folder when we have it: a local path means
 # transformers never talks to the Hub (no version checks, no safetensors auto-conversion)
-snap = Path.home() / ".cache/huggingface/hub" / ("models--" + args.model.replace("/", "--")) / "snapshots" / sha
+snap = Path(args.local_path) if args.local_path else Path.home() / ".cache/huggingface/hub" / ("models--" + args.model.replace("/", "--")) / "snapshots" / sha
 src, rev = (str(snap), None) if snap.exists() else (args.model, sha)
 print(f"loading weights from: {src}", flush=True)
 tok = AutoTokenizer.from_pretrained(src, revision=rev, trust_remote_code=True)
