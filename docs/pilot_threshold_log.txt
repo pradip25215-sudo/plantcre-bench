@@ -1,23 +1,10 @@
-Traceback (most recent call last):
-  File "/home/pradip/plantcre/scripts/pilot_threshold.py", line 23, in <module>
-    real, shuf = best_hits("pilot_real"), best_hits("pilot_shuf")
-                 ^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/pradip/plantcre/scripts/pilot_threshold.py", line 16, in best_hits
-    df = pd.read_csv(H / f"{name}.work/{name}.processed.tsv", sep="\t", header=None, names=["q", "s", "score"])
-         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/pradip/miniforge3/envs/plantcre/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 872, in read_csv
-    return _read(filepath_or_buffer, kwds)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/pradip/miniforge3/envs/plantcre/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 300, in _read
-    parser = TextFileReader(filepath_or_buffer, **kwds)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/pradip/miniforge3/envs/plantcre/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1643, in __init__
-    self._engine = self._make_engine(f, self.engine)
-                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/pradip/miniforge3/envs/plantcre/lib/python3.11/site-packages/pandas/io/parsers/readers.py", line 1907, in _make_engine
-    self.handles = get_handle(
-                   ^^^^^^^^^^^
-  File "/home/pradip/miniforge3/envs/plantcre/lib/python3.11/site-packages/pandas/io/common.py", line 930, in get_handle
-    handle = open(
-             ^^^^^
-FileNotFoundError: [Errno 2] No such file or directory: '/home/pradip/plantcre/data/homology/pilot_real.work/pilot_real.processed.tsv'
+best-hit score percentiles (sequences with no hit at all count as 0)
+  shuffled: p50=0 | p90=21 | p99=26 | p99.9=31 | p100=34
+  real    : p50=22 | p90=28 | p99=94 | p99.9=166 | p100=168
+
+per dataset (shuffled p99.9 / real fraction above 40, 60, 80):
+  enhancer   shuffled p99.9=0 | real >40: 0.027  >60: 0.015  >80: 0.011
+  promoter   shuffled p99.9=33 | real >40: 0.057  >60: 0.030  >80: 0.018
+  terminator shuffled p99.9=28 | real >40: 0.025  >60: 0.016  >80: 0.011
+
+SUGGESTED THRESHOLD (max of shuffled scores, rounded up): 34
