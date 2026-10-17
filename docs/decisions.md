@@ -50,3 +50,9 @@
 - D5. Main homology threshold = 40 (above the shuffled max, with margin for the much larger
   full database). Sensitivity analysis at 34 and 60.
 - D6. Word size for full runs decided by the recall test (word 11 vs word 7 on the pilot).
+- D6 (final). Full all-vs-all search: hashFrag's exact blastn flags (word 7, evalue 100, dust off,
+  max_hsps 1) run directly, plus -min_raw_gapped_score 20 (hashFrag's blastn_module can't pass it).
+  Pilot vs plain word 7: ~17x faster, output 58x smaller. Recall of homologous pairs: 0.993 at
+  threshold 40 (2/303 missed, both truly separated), 0.988 at 34, 1.000 at 60.
+  Main conclusions must hold at both 40 and 60 (60 = exact recall).
+- HF cache on this server is /data3/pradip/hf_cache (HF_HOME). Models are loaded with --local-path.
