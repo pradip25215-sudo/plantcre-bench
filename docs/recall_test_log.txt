@@ -1,0 +1,4 @@
+ thr |  pairs w7 | pairs w11 |  recall | largest group | n groups | singletons
+  34 |       418 |       350 |  0.8373 |            44 |      111 |      5,707
+  40 |       303 |       274 |  0.9043 |            38 |       88 |      5,770
+  60 |       109 |       109 |  1.0000 |            14 |       51 |      5,869

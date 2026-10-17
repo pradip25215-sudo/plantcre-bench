@@ -1,0 +1,35 @@
+building 6-mer features...
+
+=== leaf: train=65,004 test=7,154 ===
+6-mer ridge        R2=0.483  rho=0.709
+NT layer  2 ridge   R2=0.327  rho=0.574
+NT layer  4 ridge   R2=0.378  rho=0.603
+NT layer  6 ridge   R2=0.392  rho=0.610
+NT layer  8 ridge   R2=0.397  rho=0.611
+NT layer 10 ridge   R2=0.435  rho=0.649
+NT layer 12 ridge   R2=0.423  rho=0.637
+NT layer 14 ridge   R2=0.411  rho=0.627
+NT layer 16 ridge   R2=0.394  rho=0.612
+NT layer 18 ridge   R2=0.390  rho=0.609
+NT layer 20 ridge   R2=0.400  rho=0.619
+NT layer 22 ridge   R2=0.409  rho=0.631
+Jores CNN pred file columns: ['sample.name', 'enrichment', 'prediction']
+Jores CNN (enrichment vs prediction)  R2=0.714
+
+=== proto: train=68,213 test=7,595 ===
+6-mer ridge        R2=0.448  rho=0.645
+NT layer  2 ridge   R2=0.231  rho=0.468
+NT layer  4 ridge   R2=0.273  rho=0.514
+NT layer  6 ridge   R2=0.280  rho=0.521
+NT layer  8 ridge   R2=0.307  rho=0.541
+NT layer 10 ridge   R2=0.364  rho=0.593
+NT layer 12 ridge   R2=0.347  rho=0.576
+NT layer 14 ridge   R2=0.335  rho=0.566
+NT layer 16 ridge   R2=0.320  rho=0.548
+NT layer 18 ridge   R2=0.309  rho=0.540
+NT layer 20 ridge   R2=0.311  rho=0.543
+NT layer 22 ridge   R2=0.318  rho=0.553
+Jores CNN pred file columns: ['sample.name', 'enrichment', 'prediction']
+Jores CNN (enrichment vs prediction)  R2=0.670
+
+saved results/probe_promoters_original_split.tsv

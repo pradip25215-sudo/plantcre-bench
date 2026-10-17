@@ -33,3 +33,20 @@
 - Delta noise ceiling from replicate data (eVal_reps.rds).
 - hashFrag homology splits.
 - Overlap check for tomato tiles.
+
+## 2026-10-17 — Day 2
+
+### Embeddings
+- NT-v2-100M (InstaDeepAI/nucleotide-transformer-v2-100m-multi-species), revision
+  f34324c6fde36a4f635f0f1f06cac5d25acd6798. Mean-pooled (CLS + padding excluded), layers 2,4,...,22, float16.
+- Rule: first download of any model runs in the foreground; every background run uses HF_HUB_OFFLINE=1
+  (the HF version check hung on this server without it).
+
+### Homology (hashFrag 1.0.2, BLAST+ 2.17.0 from the hashfrag conda env)
+- pip hashFrag 1.0.2 is missing messages.json; copied from the GitHub repo (src/hashFrag/).
+- An older BLAST 2.15 in ~/ncbi-blast-2.15.0+ shadows conda's; scripts force the env's BLAST first in PATH.
+- Pilot: 2,000 natural sequences per dataset + dinucleotide-shuffled copies; word 7, evalue 100.
+  Shuffled best-hit scores: p99.9 = 31, max = 34. Real: p99 = 94, p99.9 = 166.
+- D5. Main homology threshold = 40 (above the shuffled max, with margin for the much larger
+  full database). Sensitivity analysis at 34 and 60.
+- D6. Word size for full runs decided by the recall test (word 11 vs word 7 on the pilot).
