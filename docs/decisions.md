@@ -56,3 +56,14 @@
   threshold 40 (2/303 missed, both truly separated), 0.988 at 34, 1.000 at 60.
   Main conclusions must hold at both 40 and 60 (60 = exact recall).
 - HF cache on this server is /data3/pradip/hf_cache (HF_HOME). Models are loaded with --local-path.
+
+## 2026-10-21 — Experiment 1, first results
+- Published splits leak: 32-36% of test sequences have a train homolog at score >= 40 (22-28% at >= 60)
+  in all three datasets. Saved per-sequence bins in data/splits/*_original_*_homology_bins.parquet.
+- Frozen embeddings + ridge (6-mer, NT-v2, AgroNT) lose almost nothing on homology splits for promoters
+  and terminators (differences ~0.01 R2, same size as seed noise). Q1 is not supported for linear probes.
+  The real test is a high-capacity model -> CNN from scratch on the same splits (cnn_exp1.py).
+- D7. Enhancer splits with variant-WT groups forced to test (D3) distort Experiment 1 (t40 test = 21%,
+  train = 70%). Experiment 1 uses unforced splits (data/splits/enhancers_nf_*). Experiment 3 keeps the
+  forced splits. Old results/exp1_enhancers.tsv (forced) is not used.
+- Layer selection is done on validation only. AgroNT best = layer 12, NT-v2 best = layer 10 on every task.

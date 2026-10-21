@@ -13,6 +13,7 @@ Enhancers: random splits are made on base sequences so fwd/rev copies stay toget
 usage: python exp1_homology.py <dataset>
 """
 import json
+import os
 import sys
 from itertools import product
 from pathlib import Path
@@ -38,6 +39,7 @@ ASSAYS = {
     "enhancers": {a: (f"strength_{a}", "split") for a in ["light", "dark", "warm", "cold", "maize"]},
 }[DATASET]
 UNIT = "base_id" if DATASET == "enhancers" else "id"
+SPLITTAG = os.environ.get("SPLITTAG", "")
 
 
 def kmer_counts(seqs, k=6):
@@ -75,7 +77,7 @@ for s in SEEDS:
     splits[("random", s)] = pd.Series(units).map(dict(zip(uniq, lab))).to_numpy()
 for t in THRS:
     for s in SEEDS:
-        sp = pd.read_parquet(S / f"{DATASET}_t{t}_s{s}.parquet")[["id", "split"]]
+        sp = pd.read_parquet(S / f"{DATASET}{SPLITTAG}_t{t}_s{s}.parquet")[["id", "split"]]
         splits[(f"homology_t{t}", s)] = df[["id"]].merge(sp, on="id", how="left")["split"].to_numpy()
 
 # ---- homology bins of the original test sets
@@ -153,14 +155,14 @@ for model in MODELS:
               " | ".join(f"{k}={np.mean(v):.3f}+-{np.std(v):.3f}" for k, v in res.items()), flush=True)
         if model != "6mer":
             del X
-    pd.DataFrame(rows).to_csv(ROOT / f"results/exp1_{DATASET}.tsv", sep="\t", index=False)
+    pd.DataFrame(rows).to_csv(ROOT / f"results/exp1_{DATASET}{SPLITTAG}.tsv", sep="\t", index=False)
 
 out = pd.DataFrame(rows)
-out.to_csv(ROOT / f"results/exp1_{DATASET}.tsv", sep="\t", index=False)
+out.to_csv(ROOT / f"results/exp1_{DATASET}{SPLITTAG}.tsv", sep="\t", index=False)
 print("\n######## mean R2 (sd) over seeds, bin = all")
 summ = out[out["bin"] == "all"].groupby(["assay", "model", "split"])["r2"].agg(["mean", "std"]).round(3)
 print(summ.unstack("split").to_string())
 print("\n######## original split, R2 by homology bin")
 ob = out[(out["split"] == "original")].pivot_table(index=["assay", "model"], columns="bin", values="r2").round(3)
 print(ob.reindex(columns=["all"] + BIN_NAMES).to_string())
-print(f"\nsaved results/exp1_{DATASET}.tsv\nEXP1 DONE {DATASET}", flush=True)
+print(f"\nsaved results/exp1_{DATASET}{SPLITTAG}.tsv\nEXP1 DONE {DATASET}", flush=True)

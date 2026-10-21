@@ -11,6 +11,7 @@ For each dataset and threshold (34, 40, 60):
 
 usage: python make_splits.py <dataset> [<dataset> ...]
 """
+import os
 import sys
 from pathlib import Path
 
@@ -22,6 +23,8 @@ H = ROOT / "data/homology"
 P = ROOT / "data/processed"
 OUT = ROOT / "data/splits"
 OUT.mkdir(parents=True, exist_ok=True)
+NOFORCE = os.environ.get("NOFORCE") == "1"
+TAG = "_nf" if NOFORCE else ""
 THRESHOLDS = [34, 40, 60]
 SEEDS = [1, 2, 3, 4, 5]
 FRAC = {"train": 0.8, "val": 0.1, "test": 0.1}
@@ -86,7 +89,7 @@ for dataset in sys.argv[1:]:
     unit = "base_id" if dataset == "enhancers" else "id"
 
     forced = set()
-    if dataset == "enhancers":
+    if dataset == "enhancers" and not NOFORCE:
         v = pd.read_parquet(P / "variant_pairs.parquet")
         forced = set(v["base_sequence"].str.replace(r"_(fwd|rev)$", "", regex=True))
 
@@ -109,7 +112,7 @@ for dataset in sys.argv[1:]:
             sp = comp.map(g2s)
             res = pd.DataFrame({unit: comp.index, "group": comp.values, "split": sp.values})
             res = df[["id"] + ([unit] if unit != "id" else [])].merge(res, on=unit, how="left")
-            res.to_parquet(OUT / f"{dataset}_t{thr}_s{seed}.parquet", index=False)
+            res.to_parquet(OUT / f"{dataset}{TAG}_t{thr}_s{seed}.parquet", index=False)
             if seed == 1:
                 frac = res["split"].value_counts(normalize=True).round(3).to_dict()
                 s_map = dict(zip(comp.index, sp.values))
