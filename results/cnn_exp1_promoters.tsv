@@ -1,0 +1,33 @@
+dataset	assay	model	split	seed	bin	n_test	r2	spearman	epochs
+promoters	leaf	cnn	original	0	all	7154	0.66757154	0.8138729574795915	18
+promoters	leaf	cnn	original	0	no hit	640	0.66414815		18
+promoters	leaf	cnn	original	0	<34 (chance)	3798	0.6581396		18
+promoters	leaf	cnn	original	0	34-40	365	0.68498236		18
+promoters	leaf	cnn	original	0	40-60	774	0.657697		18
+promoters	leaf	cnn	original	0	60-100	930	0.66891974		18
+promoters	leaf	cnn	original	0	>=100	647	0.6941663		18
+promoters	proto	cnn	original	0	all	7595	0.6500462	0.7809900235337774	15
+promoters	proto	cnn	original	0	no hit	555	0.58124137		15
+promoters	proto	cnn	original	0	<34 (chance)	4033	0.63367474		15
+promoters	proto	cnn	original	0	34-40	396	0.65578014		15
+promoters	proto	cnn	original	0	40-60	878	0.6456316		15
+promoters	proto	cnn	original	0	60-100	1063	0.6808084		15
+promoters	proto	cnn	original	0	>=100	670	0.7001761		15
+promoters	leaf	cnn	random	1	all	7236	0.64481103	0.7982108973363814	18
+promoters	proto	cnn	random	1	all	7592	0.6539752	0.782010312454639	18
+promoters	leaf	cnn	random	2	all	7234	0.62356347	0.7861315626341063	8
+promoters	proto	cnn	random	2	all	7581	0.61819357	0.7587323224618738	8
+promoters	leaf	cnn	random	3	all	7210	0.65512395	0.8069093127608418	11
+promoters	proto	cnn	random	3	all	7564	0.6356063	0.7717153031899379	11
+promoters	leaf	cnn	homology_t40	1	all	7144	0.6179151	0.7818573462370741	9
+promoters	proto	cnn	homology_t40	1	all	7597	0.62059724	0.7683350223162152	9
+promoters	leaf	cnn	homology_t40	2	all	7245	0.6679074	0.8146363747111671	15
+promoters	proto	cnn	homology_t40	2	all	7590	0.6455315	0.783535839554944	15
+promoters	leaf	cnn	homology_t40	3	all	7204	0.6618298	0.8100049199879402	17
+promoters	proto	cnn	homology_t40	3	all	7595	0.62832415	0.7750939939546455	17
+promoters	leaf	cnn	homology_t60	1	all	7199	0.4688599	0.6918321909983706	13
+promoters	proto	cnn	homology_t60	1	all	7563	0.30853936	0.582402661566992	13
+promoters	leaf	cnn	homology_t60	2	all	7214	0.6622055	0.8118562146811935	14
+promoters	proto	cnn	homology_t60	2	all	7593	0.65008134	0.7870228389760094	14
+promoters	leaf	cnn	homology_t60	3	all	7219	0.6285768	0.7873821661571415	17
+promoters	proto	cnn	homology_t60	3	all	7584	0.6304311	0.7790339527473872	17

@@ -1,0 +1,81 @@
+dataset	assay	model	split	seed	bin	n_test	r2	spearman	epochs
+enhancers	light	cnn	original	0	all	33300	0.5762264	0.7726172760779977	17
+enhancers	light	cnn	original	0	no hit	787	0.42258954		17
+enhancers	light	cnn	original	0	<34 (chance)	18322	0.56382537		17
+enhancers	light	cnn	original	0	34-40	2170	0.5892129		17
+enhancers	light	cnn	original	0	40-60	2748	0.5668779		17
+enhancers	light	cnn	original	0	60-100	5118	0.5779975		17
+enhancers	light	cnn	original	0	>=100	4155	0.6475354		17
+enhancers	dark	cnn	original	0	all	33300	0.5794432	0.7755578084339071	17
+enhancers	dark	cnn	original	0	no hit	787	0.44563648		17
+enhancers	dark	cnn	original	0	<34 (chance)	18322	0.57630074		17
+enhancers	dark	cnn	original	0	34-40	2170	0.6030549		17
+enhancers	dark	cnn	original	0	40-60	2748	0.55050975		17
+enhancers	dark	cnn	original	0	60-100	5118	0.5751663		17
+enhancers	dark	cnn	original	0	>=100	4155	0.61072105		17
+enhancers	warm	cnn	original	0	all	33300	0.54576826	0.7567574476926674	17
+enhancers	warm	cnn	original	0	no hit	787	0.38541567		17
+enhancers	warm	cnn	original	0	<34 (chance)	18322	0.53490543		17
+enhancers	warm	cnn	original	0	34-40	2170	0.5710981		17
+enhancers	warm	cnn	original	0	40-60	2748	0.5573899		17
+enhancers	warm	cnn	original	0	60-100	5118	0.53960055		17
+enhancers	warm	cnn	original	0	>=100	4155	0.594633		17
+enhancers	cold	cnn	original	0	all	33300	0.49961004	0.7139733485168595	17
+enhancers	cold	cnn	original	0	no hit	787	0.35126793		17
+enhancers	cold	cnn	original	0	<34 (chance)	18322	0.49379283		17
+enhancers	cold	cnn	original	0	34-40	2170	0.5021056		17
+enhancers	cold	cnn	original	0	40-60	2748	0.48963246		17
+enhancers	cold	cnn	original	0	60-100	5118	0.4758958		17
+enhancers	cold	cnn	original	0	>=100	4155	0.57160175		17
+enhancers	maize	cnn	original	0	all	33300	0.3401555	0.5514738527313324	17
+enhancers	maize	cnn	original	0	no hit	787	0.32740274		17
+enhancers	maize	cnn	original	0	<34 (chance)	18322	0.3288055		17
+enhancers	maize	cnn	original	0	34-40	2170	0.31826317		17
+enhancers	maize	cnn	original	0	40-60	2748	0.33476084		17
+enhancers	maize	cnn	original	0	60-100	5118	0.36548704		17
+enhancers	maize	cnn	original	0	>=100	4155	0.3798682		17
+enhancers	light	cnn	random	1	all	33771	0.58899975	0.782067964845561	14
+enhancers	dark	cnn	random	1	all	33771	0.5760393	0.7839697718820894	14
+enhancers	warm	cnn	random	1	all	33771	0.5568425	0.7661969401579235	14
+enhancers	cold	cnn	random	1	all	33771	0.50243115	0.7183377996407102	14
+enhancers	maize	cnn	random	1	all	33771	0.3077306	0.5224378196550665	14
+enhancers	light	cnn	random	2	all	33808	0.573125	0.777777763050494	17
+enhancers	dark	cnn	random	2	all	33808	0.5537582	0.7726312593814527	17
+enhancers	warm	cnn	random	2	all	33808	0.5522278	0.7666994980014613	17
+enhancers	cold	cnn	random	2	all	33808	0.49167243	0.7157630035368527	17
+enhancers	maize	cnn	random	2	all	33808	0.31600532	0.5272091478985741	17
+enhancers	light	cnn	random	3	all	33803	0.5740332	0.7757856442798082	20
+enhancers	dark	cnn	random	3	all	33803	0.5654595	0.7781414880673408	20
+enhancers	warm	cnn	random	3	all	33803	0.5470942	0.7618676390359862	20
+enhancers	cold	cnn	random	3	all	33803	0.48945907	0.7113534726545496	20
+enhancers	maize	cnn	random	3	all	33803	0.31110248	0.516840578422304	20
+enhancers	light	cnn	homology_t40	1	all	33692	0.55704683	0.7705539014765288	14
+enhancers	dark	cnn	homology_t40	1	all	33692	0.55203676	0.7702198158288673	14
+enhancers	warm	cnn	homology_t40	1	all	33692	0.5348265	0.7548354435597504	14
+enhancers	cold	cnn	homology_t40	1	all	33692	0.4776042	0.707654574258227	14
+enhancers	maize	cnn	homology_t40	1	all	33692	0.31233963	0.5414880258421874	14
+enhancers	light	cnn	homology_t40	2	all	33727	0.5591394	0.7724188289060093	15
+enhancers	dark	cnn	homology_t40	2	all	33727	0.5538669	0.7682966338572517	15
+enhancers	warm	cnn	homology_t40	2	all	33727	0.53442925	0.7568343631996769	15
+enhancers	cold	cnn	homology_t40	2	all	33727	0.4839265	0.7123530443953409	15
+enhancers	maize	cnn	homology_t40	2	all	33727	0.32711264	0.5528761474026073	15
+enhancers	light	cnn	homology_t40	3	all	33746	0.55522114	0.7706054386707606	12
+enhancers	dark	cnn	homology_t40	3	all	33746	0.55145425	0.7716928118794198	12
+enhancers	warm	cnn	homology_t40	3	all	33746	0.5450018	0.7657797405887798	12
+enhancers	cold	cnn	homology_t40	3	all	33746	0.47646898	0.707817129256708	12
+enhancers	maize	cnn	homology_t40	3	all	33746	0.28004217	0.5197887773133016	12
+enhancers	light	cnn	homology_t60	1	all	33194	0.5408944	0.7561816569945112	9
+enhancers	dark	cnn	homology_t60	1	all	33194	0.5427792	0.7678448276299772	9
+enhancers	warm	cnn	homology_t60	1	all	33194	0.5285139	0.7520485546222594	9
+enhancers	cold	cnn	homology_t60	1	all	33194	0.45616525	0.6911798455262651	9
+enhancers	maize	cnn	homology_t60	1	all	33194	0.26994723	0.49077918674828347	9
+enhancers	light	cnn	homology_t60	2	all	33684	0.55347264	0.7710081139241417	15
+enhancers	dark	cnn	homology_t60	2	all	33684	0.5313737	0.7634277323243928	15
+enhancers	warm	cnn	homology_t60	2	all	33684	0.5321125	0.7579866127492112	15
+enhancers	cold	cnn	homology_t60	2	all	33684	0.47677234	0.7118873986585221	15
+enhancers	maize	cnn	homology_t60	2	all	33684	0.28057423	0.4945035626396071	15
+enhancers	light	cnn	homology_t60	3	all	33700	0.56182545	0.7718682584987595	16
+enhancers	dark	cnn	homology_t60	3	all	33700	0.5633547	0.7780535183223339	16
+enhancers	warm	cnn	homology_t60	3	all	33700	0.5459078	0.7596667200794212	16
+enhancers	cold	cnn	homology_t60	3	all	33700	0.48818427	0.7141468501690689	16
+enhancers	maize	cnn	homology_t60	3	all	33700	0.31802455	0.5393494437260746	16

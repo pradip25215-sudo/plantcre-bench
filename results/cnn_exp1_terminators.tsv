@@ -1,0 +1,33 @@
+dataset	assay	model	split	seed	bin	n_test	r2	spearman	epochs
+terminators	tobacco	cnn	original	0	all	5309	0.6235637	0.7753517082886203	13
+terminators	tobacco	cnn	original	0	no hit	452	0.5838856		13
+terminators	tobacco	cnn	original	0	<34 (chance)	2972	0.606529		13
+terminators	tobacco	cnn	original	0	34-40	168	0.6224377		13
+terminators	tobacco	cnn	original	0	40-60	372	0.6603095		13
+terminators	tobacco	cnn	original	0	60-100	594	0.6492908		13
+terminators	tobacco	cnn	original	0	>=100	751	0.6105573		13
+terminators	maize	cnn	original	0	all	5309	0.5485308	0.7341387588733455	13
+terminators	maize	cnn	original	0	no hit	452	0.5218874		13
+terminators	maize	cnn	original	0	<34 (chance)	2972	0.5444135		13
+terminators	maize	cnn	original	0	34-40	168	0.594303		13
+terminators	maize	cnn	original	0	40-60	372	0.5906776		13
+terminators	maize	cnn	original	0	60-100	594	0.5025664		13
+terminators	maize	cnn	original	0	>=100	751	0.58148605		13
+terminators	tobacco	cnn	random	1	all	5341	0.57127774	0.7420951528633812	10
+terminators	maize	cnn	random	1	all	5341	0.5426313	0.7312645689384928	10
+terminators	tobacco	cnn	random	2	all	5341	0.5990194	0.7464006525298809	14
+terminators	maize	cnn	random	2	all	5341	0.5695749	0.7505320915303937	14
+terminators	tobacco	cnn	random	3	all	5341	0.56803185	0.7288887046249694	19
+terminators	maize	cnn	random	3	all	5341	0.52700365	0.715783788143603	19
+terminators	tobacco	cnn	homology_t40	1	all	5341	0.5240973	0.6903025128296848	17
+terminators	maize	cnn	homology_t40	1	all	5341	0.47439098	0.684868486496446	17
+terminators	tobacco	cnn	homology_t40	2	all	5342	0.59707195	0.7554203695913012	20
+terminators	maize	cnn	homology_t40	2	all	5342	0.574697	0.7557863379194941	20
+terminators	tobacco	cnn	homology_t40	3	all	5342	0.5520088	0.7300698732385368	16
+terminators	maize	cnn	homology_t40	3	all	5342	0.4928939	0.7013350985691618	16
+terminators	tobacco	cnn	homology_t60	1	all	5341	0.5969683	0.747102005397085	18
+terminators	maize	cnn	homology_t60	1	all	5341	0.5797238	0.7558306131024023	18
+terminators	tobacco	cnn	homology_t60	2	all	5342	0.61921865	0.7658242259900848	12
+terminators	maize	cnn	homology_t60	2	all	5342	0.55092376	0.7314730451413947	12
+terminators	tobacco	cnn	homology_t60	3	all	5341	0.57750905	0.7390510198711573	15
+terminators	maize	cnn	homology_t60	3	all	5341	0.5142626	0.7187601322921768	15
