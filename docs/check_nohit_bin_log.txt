@@ -1,0 +1,36 @@
+
+######## promoters (strength_leaf), original test set
+                 n     gc  entropy3  y_mean   y_sd
+bin                                               
+no hit         640  0.489     5.559   0.495  1.588
+<34 (chance)  3798  0.436     5.416   0.985  1.607
+34-40          365  0.459     5.415   1.024  1.620
+40-60          774  0.482     5.457   0.892  1.708
+60-100         930  0.489     5.460   0.870  1.716
+>=100          647  0.465     5.457   0.704  1.678
+id prefix in 'no hit': {'PRO': 640}
+id prefix share in whole test set: {'PRO': 1.0}
+
+######## terminators (strength_tobacco), original test set
+                 n     gc  entropy3  y_mean   y_sd
+bin                                               
+no hit         452  0.446     5.561  -3.766  0.767
+<34 (chance)  2972  0.362     5.387  -3.219  0.965
+34-40          168  0.346     5.297  -3.227  0.893
+40-60          372  0.386     5.440  -3.242  0.948
+60-100         594  0.387     5.454  -3.359  0.917
+>=100          751  0.380     5.448  -3.298  0.928
+id prefix in 'no hit': {'MaizeTop': 9, 'GC': 3, 'ArabidopsisPACs': 2, 'AT1G67630': 2, 'Maize': 2, 'Zm00001d021898': 2}
+id prefix share in whole test set: {'MaizeTop': 0.02, 'ArabidopsisPACs': 0.018, 'GC': 0.016, 'Maize': 0.004, 'Arabidopsis': 0.003, 'AT4G03505': 0.001}
+
+######## enhancers (strength_light), original test set
+                  n     gc  entropy3  y_mean   y_sd
+bin                                                
+no hit          787  0.500     5.582  -0.692  1.308
+<34 (chance)  18322  0.437     5.405  -0.371  1.361
+34-40          2170  0.398     5.243  -0.067  1.277
+40-60          2748  0.480     5.372  -0.407  1.261
+60-100         5118  0.410     5.311  -0.394  1.176
+>=100          4155  0.441     5.354  -0.366  1.343
+id prefix in 'no hit': {'Sb': 295, 'Zm': 277, 'At': 140, 'Sl': 73, 'Solyc12g099610': 2}
+id prefix share in whole test set: {'At': 0.318, 'Zm': 0.267, 'Sb': 0.181, 'Sl': 0.152, 'Solyc11g032100': 0.002, 'Solyc01g103530': 0.001}

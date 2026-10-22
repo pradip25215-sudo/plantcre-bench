@@ -1,0 +1,7 @@
+% of the reachable Pearson r: WT strength vs mutation effect
+condition        WT_light  WT_dark  WT_warm  WT_cold  WT_maize  delta_light  delta_dark  delta_warm  delta_cold  delta_maize
+model                                                                                                                       
+6mer                 77.0     80.0     79.0     77.0      52.0         54.0        49.0        48.0        53.0         39.0
+agront_1b            73.0     74.0     76.0     74.0      43.0         40.0        38.0        38.0        40.0         28.0
+cnn (mean of 3)      82.0     84.0     83.0     83.0      58.0         60.0        63.0        54.0        61.0         46.0
+ntv2_100m            68.0     70.0     72.0     69.0      39.0         37.0        31.0        36.0        35.0         20.0
