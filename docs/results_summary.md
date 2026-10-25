@@ -31,9 +31,14 @@
 - Same scale (% of reachable Pearson r): WT strength 68-84% for all models (light/dark/warm/cold),
   mutation effect 31-63%. Gap of 20-35 points for every model. Maize lowest for both.
 
-## Still to do
-- Reason for the 'no hit' bin, Experiment 2, fine-tuned NT-v2-100M, CNN with 5 seeds on promoters/terminators,
-  plantGREP's own model on the variant pairs (with the caveat that it saw 540 of the WTs in training).
+## Still to do (updated 2026-10-25)
+- Formal novelty check (proposal section 8) -> docs/prior-art.md, before any writing.
+- D2-filtered rerun of the final tables (controls out of the metrics).
+- CNN with 5 seeds on promoters/terminators; NT-v2 fine-tuning on the enhancer _nf splits (Experiment 1).
+- Results pending tonight: CNN on the same 100k rows as fine-tuning (exp3_cnn_sub100k), NT-v2 fine-tuned on terminators.
+- plantGREP's own model on the variant pairs (it saw 540 of the WTs in training, report separately).
+- Positional k-mer baseline for the terminator result in Experiment 2.
+- Figures (4 main) and the talk with Dr. Kumar about authorship and bioRxiv.
 
 ## Experiment 2 (2026-10-25): 6-mer composition inside the embeddings
 - 6-mer counts explain 44-52% of embedding variance (NT-v2 L10 and AgroNT L12, all datasets).
