@@ -1,6 +1,7 @@
 """Experiment 3 with the CNN: trained on the FORCED split (t40, seed 1) exactly like exp3_variants.py,
 so no WT or homolog of a WT is seen in training. 3 random inits, predictions averaged
 (one bad run shouldn't decide the result; single-init numbers are printed too)."""
+import os
 from pathlib import Path
 
 import numpy as np
@@ -13,6 +14,8 @@ ROOT = Path.home() / "plantcre"
 P, S = ROOT / "data/processed", ROOT / "data/splits"
 COND = ["light", "dark", "warm", "cold", "maize"]
 STRONG = 0.5
+SUB = int(os.environ.get("SUB", "0"))  # >0: train on the same subsample as finetune_ntv2.py
+TAG = f"_sub{SUB // 1000}k" if SUB else ""
 dev = "cuda"
 torch.backends.cudnn.benchmark = True
 
@@ -69,6 +72,10 @@ def train(seed):
     has = np.isfinite(Y).any(axis=1)
     tr = np.where((sp == "train") & has)[0]
     va = np.where((sp == "val") & has)[0]
+    if SUB:  # same rng and order as finetune_ntv2.py -> exactly the same rows
+        r0 = np.random.default_rng(0)
+        tr = np.sort(r0.choice(tr, SUB, replace=False))
+        va = np.sort(r0.choice(va, 10_000, replace=False))
     mu, sd = np.nanmean(Y[tr], 0), np.nanstd(Y[tr], 0)
     yn = ((Y - mu) / sd).astype(np.float32)
     Yt = torch.from_numpy(yn)
@@ -127,7 +134,7 @@ for seed in [1, 2, 3]:
 rows += score(np.mean(PW, 0), np.mean(PM, 0), "cnn (mean of 3)")
 
 out = pd.DataFrame(rows)
-out.to_csv(ROOT / "results/exp3_cnn.tsv", sep="\t", index=False)
+out.to_csv(ROOT / f"results/exp3_cnn{TAG}.tsv", sep="\t", index=False)
 for col in ["delta_spearman", "sign_acc_strong", "wt_r2"]:
     print(f"\n######## CNN {col}")
     print(out.pivot(index="model", columns="condition", values=col).round(3)[COND].to_string())

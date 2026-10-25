@@ -34,3 +34,17 @@
 ## Still to do
 - Reason for the 'no hit' bin, Experiment 2, fine-tuned NT-v2-100M, CNN with 5 seeds on promoters/terminators,
   plantGREP's own model on the variant pairs (with the caveat that it saw 540 of the WTs in training).
+
+## Experiment 2 (2026-10-25): 6-mer composition inside the embeddings
+- 6-mer counts explain 44-52% of embedding variance (NT-v2 L10 and AgroNT L12, all datasets).
+- R2 that the non-composition residual adds on top of 6-mers: terminators +0.09 to +0.20, promoters +0.05 to +0.10,
+  enhancers +0.006 to +0.024. On enhancers the composition part alone beats the full embedding.
+- Guess (not tested): 6-mer counts lose position, and terminator strength depends on PAS / cleavage position.
+  Needs a positional k-mer baseline.
+
+## Fine-tuned NT-v2-100M (2026-10-25)
+- Promoters, test R2 leaf / proto: random 0.700 / 0.677, homology t40 0.700 / 0.660, t60 0.700 / 0.668.
+  Frozen probe was 0.44 / 0.36. Matches the published Jores CNN. No homology drop even for this model.
+- Experiment 3 (forced t40 split, train subsampled to 100k rows): delta rho light 0.534, dark 0.504, warm 0.438,
+  cold 0.509, maize 0.295. Same level as the CNN trained on the full train set. Val loss rises after epoch 2.
+- Comparison with the CNN is not fair yet (100k vs 270k rows). CNN on the same 100k rows: exp3_cnn_sub100k.
