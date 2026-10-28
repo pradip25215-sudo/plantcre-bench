@@ -53,3 +53,12 @@
 - Experiment 3 (forced t40 split, train subsampled to 100k rows): delta rho light 0.534, dark 0.504, warm 0.438,
   cold 0.509, maize 0.295. Same level as the CNN trained on the full train set. Val loss rises after epoch 2.
 - Comparison with the CNN is not fair yet (100k vs 270k rows). CNN on the same 100k rows: exp3_cnn_sub100k.
+
+## Same-data comparison and terminator fine-tuning (2026-10-28)
+- Exp 3, both on the same 100k rows: fine-tuned NT-v2 (1 run) delta rho 0.534 / 0.504 / 0.438 / 0.509 / 0.295,
+  CNN mean of 3 inits 0.502 / 0.537 / 0.428 / 0.495 / 0.329 (light/dark/warm/cold/maize). A tie; one NT run is
+  above every single CNN init. CNN on all 270k rows: 0.519 light, so more data adds little.
+- Terminators, fine-tuned NT-v2, seed 1: random 0.689 / 0.624, t40 0.667 / 0.576, t60 0.679 / 0.619
+  (tobacco / maize). Frozen 0.393 / 0.366. Strictest split (t40) drops most: 0.022 / 0.048. First sign of
+  leakage for a high-capacity model. Seeds 2 and 3 running.
+- Prior-art check in docs/prior-art.md: BOTANIC-1 closest; PGB promoter test = our leaky Jores leaf test.

@@ -1,0 +1,7 @@
+dataset	split	seed	assay	metric	value
+terminators	random	1	tobacco	test_r2	0.6891367
+terminators	random	1	maize	test_r2	0.6243064
+terminators	homology_t40	1	tobacco	test_r2	0.66713876
+terminators	homology_t40	1	maize	test_r2	0.57572675
+terminators	homology_t60	1	tobacco	test_r2	0.6791353
+terminators	homology_t60	1	maize	test_r2	0.61927056

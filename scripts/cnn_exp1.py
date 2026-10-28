@@ -7,6 +7,7 @@ Splits: original (published; 10% of train held out as val when there is no val),
 homology t40 s1-3, homology t60 s1-3. Assays that share a split are trained as one multi-task model.
 usage: python cnn_exp1.py <dataset> [split_tag]      split_tag = "" or "_nf"
 """
+import os
 import sys
 import time
 from pathlib import Path
@@ -21,7 +22,9 @@ ROOT = Path.home() / "plantcre"
 P, S = ROOT / "data/processed", ROOT / "data/splits"
 DATASET = sys.argv[1]
 SPLITTAG = sys.argv[2] if len(sys.argv) > 2 else ""
-SEEDS, THRS = [1, 2, 3], [40, 60]
+SEEDS = [int(x) for x in os.environ.get("SEEDS", "1,2,3").split(",")]
+THRS = [40, 60]
+SEEDTAG = "" if SEEDS == [1, 2, 3] else "_seeds" + "".join(map(str, SEEDS))
 BIN_NAMES = ["no hit", "<34 (chance)", "34-40", "40-60", "60-100", ">=100"]
 ASSAYS = {
     "promoters": {"leaf": ("strength_leaf", "split_leaf"), "proto": ("strength_proto", "split_proto")},
@@ -179,7 +182,7 @@ for kind, seed, shared in configs:
                         rows.append(dict(dataset=DATASET, assay=NAMES[c], model="cnn", split=kind, seed=0,
                                          bin=bname, n_test=int(mk.sum()), r2=rb, spearman=np.nan, epochs=ep))
     print(f"cnn {kind:13s} seed {seed} | " + " ".join(msg) + f" | {ep} epochs, {(time.time() - t0) / 60:.1f} min", flush=True)
-    pd.DataFrame(rows).to_csv(ROOT / f"results/cnn_exp1_{DATASET}{SPLITTAG}.tsv", sep="\t", index=False)
+    pd.DataFrame(rows).to_csv(ROOT / f"results/cnn_exp1_{DATASET}{SPLITTAG}{SEEDTAG}.tsv", sep="\t", index=False)
 
 out = pd.DataFrame(rows)
 print("\n######## CNN mean R2 (sd), bin = all")

@@ -62,6 +62,26 @@ def metrics(y, p):
 
 
 df = pd.read_parquet(P / f"{DATASET}.parquet")
+
+# D2: EXCL_CONTROLS=1 keeps controls in training but leaves them out of every test metric
+EXCL = os.environ.get("EXCL_CONTROLS") == "1"
+D2TAG = "_d2" if EXCL else ""
+
+
+def control_mask(d):
+    if DATASET == "terminators":
+        return d["is_synthetic_control"].to_numpy(bool)
+    if DATASET == "enhancers":
+        return ~d["base_id"].astype(str).str.match(r"^(At|Zm|Sb|Sl)-|^Solyc").to_numpy()
+    for c in ("species", "sp"):
+        if c in d.columns:
+            return ~d[c].astype(str).isin(["At", "Zm", "Sb"]).to_numpy()
+    return np.zeros(len(d), bool)
+
+
+CTRL = control_mask(df) if EXCL else np.zeros(len(df), bool)
+if EXCL:
+    print(f"D2: {CTRL.sum():,} control rows in the dataset, left out of all test metrics", flush=True)
 units = df[UNIT].to_numpy()
 
 # ---- split labels, one array per (kind, seed), aligned with df rows
@@ -133,7 +153,7 @@ for model in MODELS:
         base = dict(dataset=DATASET, assay=a, model=model, layer=L)
 
         sp = df[scol].to_numpy()
-        tr, te = (sp == "train") & fin, (sp == "test") & fin
+        tr, te = (sp == "train") & fin, (sp == "test") & fin & ~CTRL
         p = fit_predict(X[tr], y[tr], X[te])
         r2, rho = metrics(y[te], p)
         rows.append(dict(base, split="original", seed=0, bin="all", n_test=int(te.sum()), r2=r2, spearman=rho))
@@ -147,7 +167,7 @@ for model in MODELS:
         orig_r2 = r2
         res = {}
         for (kind, seed), sp in splits.items():
-            tr, te = (sp == "train") & fin, (sp == "test") & fin
+            tr, te = (sp == "train") & fin, (sp == "test") & fin & ~CTRL
             r2, rho = metrics(y[te], fit_predict(X[tr], y[tr], X[te]))
             rows.append(dict(base, split=kind, seed=seed, bin="all", n_test=int(te.sum()), r2=r2, spearman=rho))
             res.setdefault(kind, []).append(r2)
@@ -155,14 +175,14 @@ for model in MODELS:
               " | ".join(f"{k}={np.mean(v):.3f}+-{np.std(v):.3f}" for k, v in res.items()), flush=True)
         if model != "6mer":
             del X
-    pd.DataFrame(rows).to_csv(ROOT / f"results/exp1_{DATASET}{SPLITTAG}.tsv", sep="\t", index=False)
+    pd.DataFrame(rows).to_csv(ROOT / f"results/exp1_{DATASET}{SPLITTAG}{D2TAG}.tsv", sep="\t", index=False)
 
 out = pd.DataFrame(rows)
-out.to_csv(ROOT / f"results/exp1_{DATASET}{SPLITTAG}.tsv", sep="\t", index=False)
+out.to_csv(ROOT / f"results/exp1_{DATASET}{SPLITTAG}{D2TAG}.tsv", sep="\t", index=False)
 print("\n######## mean R2 (sd) over seeds, bin = all")
 summ = out[out["bin"] == "all"].groupby(["assay", "model", "split"])["r2"].agg(["mean", "std"]).round(3)
 print(summ.unstack("split").to_string())
 print("\n######## original split, R2 by homology bin")
 ob = out[(out["split"] == "original")].pivot_table(index=["assay", "model"], columns="bin", values="r2").round(3)
 print(ob.reindex(columns=["all"] + BIN_NAMES).to_string())
-print(f"\nsaved results/exp1_{DATASET}{SPLITTAG}.tsv\nEXP1 DONE {DATASET}", flush=True)
+print(f"\nsaved results/exp1_{DATASET}{SPLITTAG}{D2TAG}.tsv\nEXP1 DONE {DATASET}", flush=True)
