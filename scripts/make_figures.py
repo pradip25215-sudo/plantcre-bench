@@ -89,6 +89,7 @@ ax.set_xticks(np.arange(len(sets)))
 ax.set_xticklabels([f"{s}\nn = {n:,}" for s, n in zip(sets, ns)])
 ax.set_ylabel("% of published test set\nwith a train homolog")
 ax.legend(frameon=False, ncol=3, loc="upper left")
+ax.set_ylim(0, 52)
 ax.text(-0.08, 1.02, "a", transform=ax.transAxes, fontweight="bold", fontsize=10)
 
 summary = []
@@ -147,6 +148,7 @@ ax.set_xticks(range(len(dsets)))
 ax.set_xticklabels(dsets)
 ax.set_ylabel("R2 added on top of 6-mers\n(6-mers + residual minus 6-mers)")
 ax.legend(frameon=False, fontsize=7)
+ax.set_ylim(0, 0.22)
 fig.tight_layout()
 save(fig, "fig2_composition")
 
