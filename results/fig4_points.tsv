@@ -1,0 +1,31 @@
+model	condition	wt	delta
+NT-v2 frozen	light	68.4	37.3
+NT-v2 frozen	dark	69.8	31.2
+NT-v2 frozen	warm	71.7	35.6
+NT-v2 frozen	cold	68.6	34.8
+NT-v2 frozen	maize	38.9	19.8
+AgroNT frozen	light	73.1	40.4
+AgroNT frozen	dark	73.7	37.7
+AgroNT frozen	warm	76.3	38.3
+AgroNT frozen	cold	73.7	39.6
+AgroNT frozen	maize	42.9	28.5
+6-mer ridge	light	76.8	54.0
+6-mer ridge	dark	79.7	49.3
+6-mer ridge	warm	79.2	47.7
+6-mer ridge	cold	77.0	53.0
+6-mer ridge	maize	52.3	39.2
+CNN, 100k rows	light	78.8	53.9
+CNN, 100k rows	dark	80.1	57.8
+CNN, 100k rows	warm	80.2	48.8
+CNN, 100k rows	cold	79.6	54.5
+CNN, 100k rows	maize	50.5	37.4
+NT-v2 fine-tuned, 100k rows	light	78.1	59.2
+NT-v2 fine-tuned, 100k rows	dark	80.5	53.3
+NT-v2 fine-tuned, 100k rows	warm	80.7	52.9
+NT-v2 fine-tuned, 100k rows	cold	77.9	57.0
+NT-v2 fine-tuned, 100k rows	maize	54.0	34.6
+CNN, all rows	light	82.0	60.0
+CNN, all rows	dark	83.7	63.2
+CNN, all rows	warm	82.9	53.8
+CNN, all rows	cold	82.6	60.6
+CNN, all rows	maize	58.1	46.2

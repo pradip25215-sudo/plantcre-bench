@@ -1,0 +1,24 @@
+saved figures/fig1_leakage.png and .pdf
+
+Fig 1b medians (assays averaged):
+split                  homology_t40  homology_t60  random  drop_t40  drop_t60
+dataset     model                                                            
+enhancers   6mer              0.438         0.440   0.442     0.005     0.003
+            agront_1b         0.376         0.380   0.377     0.001    -0.003
+            cnn               0.487         0.475   0.497     0.011     0.023
+            ntv2_100m         0.303         0.305   0.306     0.003     0.001
+promoters   6mer              0.463         0.454   0.461    -0.002     0.007
+            agront_1b         0.522         0.511   0.518    -0.005     0.007
+            cnn               0.645         0.646   0.649     0.004     0.003
+            ft                0.680         0.684   0.688     0.008     0.004
+            ntv2_100m         0.404         0.396   0.399    -0.005     0.003
+terminators 6mer              0.336         0.338   0.340     0.004     0.002
+            agront_1b         0.450         0.449   0.457     0.007     0.008
+            cnn               0.552         0.571   0.584     0.032     0.013
+            ft                0.644         0.645   0.655     0.011     0.010
+            ntv2_100m         0.383         0.379   0.381    -0.002     0.003
+saved figures/fig2_composition.png and .pdf
+saved figures/fig3_variants.png and .pdf
+saved figures/fig4_wt_vs_delta.png and .pdf
+
+FIGURES DONE

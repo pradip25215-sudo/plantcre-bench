@@ -1,0 +1,27 @@
+dataset	assay	model	split	seed	bin	n_test	r2	spearman	epochs
+promoters	leaf	cnn	original	0	all	7154	0.6566959	0.8075399370318885	12
+promoters	leaf	cnn	original	0	no hit	640	0.67126936		12
+promoters	leaf	cnn	original	0	<34 (chance)	3798	0.6461042		12
+promoters	leaf	cnn	original	0	34-40	365	0.6850963		12
+promoters	leaf	cnn	original	0	40-60	774	0.65871435		12
+promoters	leaf	cnn	original	0	60-100	930	0.6548407		12
+promoters	leaf	cnn	original	0	>=100	647	0.65726125		12
+promoters	proto	cnn	original	0	all	7595	0.65466744	0.7828937427511047	18
+promoters	proto	cnn	original	0	no hit	555	0.5998847		18
+promoters	proto	cnn	original	0	<34 (chance)	4033	0.6454053		18
+promoters	proto	cnn	original	0	34-40	396	0.64653546		18
+promoters	proto	cnn	original	0	40-60	878	0.6349566		18
+promoters	proto	cnn	original	0	60-100	1063	0.6732212		18
+promoters	proto	cnn	original	0	>=100	670	0.69665897		18
+promoters	leaf	cnn	random	4	all	7205	0.6745964	0.8165183324732426	17
+promoters	proto	cnn	random	4	all	7589	0.65429115	0.7878255800755656	17
+promoters	leaf	cnn	random	5	all	7208	0.6755285	0.8191031996713064	15
+promoters	proto	cnn	random	5	all	7575	0.64359266	0.7774779771062645	15
+promoters	leaf	cnn	homology_t40	4	all	7235	0.6486683	0.8057326780758772	19
+promoters	proto	cnn	homology_t40	4	all	7576	0.6673078	0.8034583893740377	19
+promoters	leaf	cnn	homology_t40	5	all	7247	0.62957084	0.7885499014498362	18
+promoters	proto	cnn	homology_t40	5	all	7580	0.6520868	0.7913561295679282	18
+promoters	leaf	cnn	homology_t60	4	all	7212	0.6532456	0.8050955698733021	13
+promoters	proto	cnn	homology_t60	4	all	7596	0.63904995	0.7785001764830816	13
+promoters	leaf	cnn	homology_t60	5	all	7166	0.67417204	0.8157663518938322	14
+promoters	proto	cnn	homology_t60	5	all	7588	0.6518034	0.7824849641375665	14

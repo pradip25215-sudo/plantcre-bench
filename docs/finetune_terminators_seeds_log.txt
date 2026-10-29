@@ -1,0 +1,16 @@
+files: ['results/finetune_ntv2_terminators.tsv', 'results/finetune_ntv2_terminators_s2.tsv', 'results/finetune_ntv2_terminators_s3.tsv']
+seeds: [np.int64(1), np.int64(2), np.int64(3)]
+
+                       mean    std count
+                      value  value value
+assay   split                           
+maize   homology_t40  0.600  0.023     3
+        homology_t60  0.605  0.020     3
+        random        0.618  0.006     3
+tobacco homology_t40  0.680  0.011     3
+        homology_t60  0.675  0.005     3
+        random        0.693  0.004     3
+
+drop from random (mean over seeds):
+  maize    t40 +0.017 | t60 +0.013
+  tobacco  t40 +0.013 | t60 +0.017
