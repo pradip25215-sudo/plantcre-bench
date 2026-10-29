@@ -1,4 +1,4 @@
-"""Main figures, first draft. Reads results/*.tsv and data/splits/*_homology_bins.parquet,
+"""Main figures (draft 2). Reads results/*.tsv and data/splits/*_homology_bins.parquet,
 writes figures/<name>.png and .pdf.
   fig1_leakage      (a) % of published test sequences with a train homolog
                     (b) test R2 per seed on random vs homology splits, every model (assays averaged)
@@ -21,6 +21,7 @@ R, S, OUT = ROOT / "results", ROOT / "data/splits", ROOT / "figures"
 OUT.mkdir(exist_ok=True)
 COND = ["light", "dark", "warm", "cold", "maize"]
 plt.rcParams.update({"font.size": 8, "axes.spines.top": False, "axes.spines.right": False, "savefig.dpi": 300})
+COL = {"ntv2_100m": "#7570b3", "agront_1b": "#e7298a", "6mer": "#66a61e", "cnn": "#e6ab02", "ft": "#1f78b4"}
 
 
 def rd(name):
@@ -28,9 +29,8 @@ def rd(name):
 
 
 def save(fig, name):
-    fig.tight_layout()
-    fig.savefig(OUT / f"{name}.png")
-    fig.savefig(OUT / f"{name}.pdf")
+    fig.savefig(OUT / f"{name}.png", bbox_inches="tight")
+    fig.savefig(OUT / f"{name}.pdf", bbox_inches="tight")
     plt.close(fig)
     print(f"saved figures/{name}.png and .pdf", flush=True)
 
@@ -43,7 +43,7 @@ for label, f in [("Promoters\n(leaf)", "promoters_original_split_leaf"),
                  ("Enhancers", "enhancers_original_split")]:
     b = pd.read_parquet(S / f"{f}_homology_bins.parquet")
     for t in (34, 40, 60):
-        leak.append(dict(set=label, thr=t, pct=100 * (b["max_score_to_train"] >= t).mean()))
+        leak.append(dict(set=label, thr=t, pct=100 * (b["max_score_to_train"] >= t).mean(), n=len(b)))
 leak = pd.DataFrame(leak)
 
 
@@ -78,38 +78,48 @@ SPLITS = [("random", "#9e9e9e", "random"), ("homology_t40", "#d95f02", "homology
           ("homology_t60", "#1b9e77", "homology t60")]
 G = E.groupby(["dataset", "model", "split", "seed"], as_index=False)["r2"].mean()  # average over assays
 
-fig = plt.figure(figsize=(7.2, 4.6))
+fig = plt.figure(figsize=(7.2, 4.8))
 ax = fig.add_subplot(2, 1, 1)
 sets = list(dict.fromkeys(leak["set"]))
 for k, (t, col) in enumerate([(34, "#fdd0a2"), (40, "#fd8d3c"), (60, "#a63603")]):
     d = leak[leak["thr"] == t].set_index("set").loc[sets]
     ax.bar(np.arange(len(sets)) + (k - 1) * 0.25, d["pct"], width=0.25, color=col, label=f"score >= {t}")
+ns = leak.drop_duplicates("set").set_index("set").loc[sets, "n"]
 ax.set_xticks(np.arange(len(sets)))
-ax.set_xticklabels(sets)
+ax.set_xticklabels([f"{s}\nn = {n:,}" for s, n in zip(sets, ns)])
 ax.set_ylabel("% of published test set\nwith a train homolog")
 ax.legend(frameon=False, ncol=3, loc="upper left")
-ax.set_title("a", loc="left", fontweight="bold")
+ax.text(-0.08, 1.02, "a", transform=ax.transAxes, fontweight="bold", fontsize=10)
 
 summary = []
 for j, ds in enumerate(["promoters", "terminators", "enhancers"]):
     ax = fig.add_subplot(2, 3, 4 + j)
-    for i, m in enumerate(MODELS):
+    present = [m for m in MODELS if ((G["dataset"] == ds) & (G["model"] == m)).any()]
+    labels = []
+    for i, m in enumerate(present):
+        n_seeds = G[(G["dataset"] == ds) & (G["model"] == m) & (G["split"] == "random")]["seed"].nunique()
+        labels.append(LABEL[m] + (f"\n({n_seeds} seed)" if n_seeds == 1 else ""))
         for k, (sp, col, _) in enumerate(SPLITS):
             v = G[(G["dataset"] == ds) & (G["model"] == m) & (G["split"] == sp)]["r2"].to_numpy()
             if len(v) == 0:
                 continue
             x = i * 4 + k
             ax.scatter(np.full(len(v), x) + np.linspace(-0.15, 0.15, len(v)), v, s=6, color=col, zorder=3)
-            ax.plot([x - 0.35, x + 0.35], [np.median(v)] * 2, color=col, lw=1.5)
-            summary.append(dict(dataset=ds, model=m, split=sp, n_seeds=len(v), median_r2=np.median(v)))
-    ax.set_xticks([i * 4 + 1 for i in range(len(MODELS))])
-    ax.set_xticklabels([LABEL[m] for m in MODELS], fontsize=6)
-    ax.set_title(("b  " if j == 0 else "") + ds, loc="left", fontweight="bold" if j == 0 else "normal")
+            med = np.median(v)
+            ax.plot([x - 0.35, x + 0.35], [med] * 2, color=col, lw=1.5)
+            if m == "cnn" and v.min() < med - 0.15:
+                ax.annotate("collapsed\nrun", (x, v.min()), xytext=(6, 0), textcoords="offset points",
+                            fontsize=5.5, va="center")
+            summary.append(dict(dataset=ds, model=m, split=sp, n_seeds=len(v), median_r2=med))
+    ax.set_xticks([i * 4 + 1 for i in range(len(present))])
+    ax.set_xticklabels(labels, fontsize=6)
+    ax.set_title(ds, loc="left")
     if j == 0:
         ax.set_ylabel("test R2 (assays averaged)")
+        ax.text(-0.3, 1.08, "b", transform=ax.transAxes, fontweight="bold", fontsize=10)
 handles = [plt.Line2D([], [], color=c, marker="o", ls="-", ms=3, label=l) for _, c, l in SPLITS]
-fig.legend(handles=handles, frameon=False, loc="lower center", ncol=3, bbox_to_anchor=(0.5, -0.02))
-fig.subplots_adjust(bottom=0.14)
+fig.legend(handles=handles, frameon=False, loc="lower center", ncol=3, bbox_to_anchor=(0.5, -0.03))
+fig.tight_layout(rect=(0, 0.03, 1, 1))
 save(fig, "fig1_leakage")
 summ = pd.DataFrame(summary).pivot_table(index=["dataset", "model"], columns="split", values="median_r2")
 summ["drop_t40"] = summ["random"] - summ["homology_t40"]
@@ -121,39 +131,57 @@ summ.round(4).to_csv(R / "fig1_medians.tsv", sep="\t")
 x = rd("exp2_decompose.tsv")
 fig, ax = plt.subplots(figsize=(4.2, 2.8))
 dsets = ["promoters", "terminators", "enhancers"]
-for k, (m, col, lab) in enumerate([("ntv2_100m", "#7570b3", "NT-v2 (layer 10)"), ("agront_1b", "#e7298a", "AgroNT (layer 12)")]):
+for k, (m, lab) in enumerate([("ntv2_100m", "NT-v2 (layer 10)"), ("agront_1b", "AgroNT (layer 12)")]):
     for i, ds in enumerate(dsets):
         d = x[(x["dataset"] == ds) & (x["model"] == m)]
         xx = i + (k - 0.5) * 0.35
-        ax.bar(xx, d["gain_R_over_K"].mean(), width=0.35, color=col, label=lab if i == 0 else None)
+        ax.bar(xx, d["gain_R_over_K"].mean(), width=0.35, color=COL[m], label=lab if i == 0 else None)
         ax.scatter(np.full(len(d), xx), d["gain_R_over_K"], s=6, color="k", zorder=3)
-        ax.text(xx, d["gain_R_over_K"].max() + 0.006, f"{100 * d['var_explained_by_kmers'].mean():.0f}%",
+        if ds == "terminators":
+            for _, r in d.iterrows():
+                ax.annotate(r["assay"], (xx, r["gain_R_over_K"]), xytext=(4, 0), textcoords="offset points",
+                            fontsize=5.5, va="center")
+        ax.text(xx, d["gain_R_over_K"].max() + 0.008, f"{100 * d['var_explained_by_kmers'].mean():.0f}%",
                 ha="center", fontsize=6)
 ax.set_xticks(range(len(dsets)))
 ax.set_xticklabels(dsets)
 ax.set_ylabel("R2 added on top of 6-mers\n(6-mers + residual minus 6-mers)")
 ax.legend(frameon=False, fontsize=7)
-ax.set_title("numbers above bars: % of embedding variance explained by 6-mers", fontsize=6, loc="left")
+fig.tight_layout()
 save(fig, "fig2_composition")
 
 # ---------------- Fig 3 ----------------
 v, z = rd("exp3_variants.tsv"), rd("exp3_zeroshot.tsv")
 c, c100, ftv = rd("exp3_cnn.tsv"), rd("exp3_cnn_sub100k.tsv"), rd("finetune_ntv2.tsv")
 ftv = ftv[(ftv["dataset"] == "variants")].pivot_table(index="assay", columns="metric", values="value")
-M3 = [("NT-v2 zero-shot", z[z["model"] == "ntv2_100m zero-shot"].set_index("condition"), "#cccccc"),
-      ("AgroNT zero-shot", z[z["model"] == "agront_1b zero-shot"].set_index("condition"), "#969696"),
-      ("NT-v2 frozen", v[v["model"] == "ntv2_100m"].set_index("condition"), "#7570b3"),
-      ("AgroNT frozen", v[v["model"] == "agront_1b"].set_index("condition"), "#e7298a"),
-      ("6-mer ridge", v[v["model"] == "6mer"].set_index("condition"), "#66a61e"),
-      ("CNN, 100k rows", c100[c100["model"] == "cnn (mean of 3)"].set_index("condition"), "#a6761d"),
-      ("NT-v2 fine-tuned, 100k rows", ftv, "#1f78b4"),
-      ("CNN, all rows", c[c["model"] == "cnn (mean of 3)"].set_index("condition"), "#e6ab02")]
+
+
+def init_range(t):
+    i = t[t["model"].str.startswith("cnn init")]
+    return i.groupby("condition")["delta_spearman"].agg(["min", "max"])
+
+
+M3 = [("NT-v2 zero-shot", z[z["model"] == "ntv2_100m zero-shot"].set_index("condition"), "#cccccc", None),
+      ("AgroNT zero-shot", z[z["model"] == "agront_1b zero-shot"].set_index("condition"), "#969696", None),
+      ("NT-v2 frozen", v[v["model"] == "ntv2_100m"].set_index("condition"), COL["ntv2_100m"], None),
+      ("AgroNT frozen", v[v["model"] == "agront_1b"].set_index("condition"), COL["agront_1b"], None),
+      ("6-mer ridge", v[v["model"] == "6mer"].set_index("condition"), COL["6mer"], None),
+      ("CNN, 100k rows (ensemble of 3)", c100[c100["model"] == "cnn (mean of 3)"].set_index("condition"), "#a6761d",
+       init_range(c100)),
+      ("NT-v2 fine-tuned, 100k rows (1 run)", ftv, COL["ft"], None),
+      ("CNN, all rows (ensemble of 3)", c[c["model"] == "cnn (mean of 3)"].set_index("condition"), COL["cnn"],
+       init_range(c))]
 ceil = rd("delta_noise_ceiling.tsv")
 ceil = ceil[ceil["min_bc"] == 1].set_index("condition")
-fig, ax = plt.subplots(figsize=(7.2, 3.0))
+fig, ax = plt.subplots(figsize=(7.2, 3.1))
 w = 0.8 / len(M3)
-for k, (lab, d, col) in enumerate(M3):
-    ax.bar(np.arange(5) - 0.4 + w * (k + 0.5), [d.loc[cnd, "delta_spearman"] for cnd in COND], width=w, color=col, label=lab)
+for k, (lab, d, col, rng) in enumerate(M3):
+    xs = np.arange(5) - 0.4 + w * (k + 0.5)
+    ys = np.array([d.loc[cnd, "delta_spearman"] for cnd in COND])
+    ax.bar(xs, ys, width=w, color=col, label=lab)
+    if rng is not None:
+        ax.vlines(xs, [rng.loc[cnd, "min"] for cnd in COND], [rng.loc[cnd, "max"] for cnd in COND],
+                  color="k", lw=0.7)
 for i, cnd in enumerate(COND):
     ax.plot([i - 0.42, i + 0.42], [ceil.loc[cnd, "ceiling_delta_spearman"]] * 2, color="k", lw=1.2)
     ax.plot([i - 0.42, i + 0.42], [ceil.loc[cnd, "rep_delta_spearman"]] * 2, color="k", lw=0.8, ls="--")
@@ -161,15 +189,16 @@ ax.axhline(0, color="k", lw=0.5)
 ax.set_xticks(range(5))
 ax.set_xticklabels(COND)
 ax.set_ylabel("Spearman, predicted vs measured\neffect of a TFBS shuffle")
-ax.legend(frameon=False, fontsize=6, ncol=4, loc="upper left", bbox_to_anchor=(0, 1.22))
+ax.legend(frameon=False, fontsize=6, ncol=4, loc="upper left", bbox_to_anchor=(0, 1.24))
 ax.text(4.45, ceil.loc["maize", "ceiling_delta_spearman"], "noise ceiling", fontsize=6, va="center")
 ax.text(4.45, ceil.loc["maize", "rep_delta_spearman"], "one replicate\nvs another", fontsize=6, va="center")
 ax.set_xlim(-0.5, 5.2)
+fig.tight_layout()
 save(fig, "fig3_variants")
 
 # ---------------- Fig 4 ----------------
 pts = []
-for lab, d, col in M3:
+for lab, d, col, _ in M3:
     if "wt_r2" not in d.columns:
         continue
     for cnd in COND:
@@ -179,15 +208,19 @@ for lab, d, col in M3:
 pts = pd.DataFrame(pts)
 fig, ax = plt.subplots(figsize=(3.6, 3.4))
 for lab, g in pts.groupby("model", sort=False):
-    ax.scatter(g["wt"], g["delta"], s=14, color=g["color"].iloc[0], label=lab)
-    for _, r in g[g["condition"] == "maize"].iterrows():
-        ax.annotate("maize", (r["wt"], r["delta"]), fontsize=5, xytext=(2, -6), textcoords="offset points")
+    col = g["color"].iloc[0]
+    nm = g[g["condition"] != "maize"]
+    mz = g[g["condition"] == "maize"]
+    ax.scatter(nm["wt"], nm["delta"], s=14, color=col, label=lab)
+    ax.scatter(mz["wt"], mz["delta"], s=14, facecolors="none", edgecolors=col, lw=1)
+ax.scatter([], [], s=14, facecolors="none", edgecolors="k", label="open circle = maize")
 ax.plot([0, 100], [0, 100], color="k", lw=0.6, ls=":")
 ax.set_xlim(0, 100)
 ax.set_ylim(0, 100)
 ax.set_xlabel("WT strength: % of reachable Pearson r")
 ax.set_ylabel("mutation effect: % of reachable Pearson r")
 ax.legend(frameon=False, fontsize=5.5, loc="upper left")
+fig.tight_layout()
 save(fig, "fig4_wt_vs_delta")
 pts.drop(columns="color").round(1).to_csv(R / "fig4_points.tsv", sep="\t", index=False)
 print("\nFIGURES DONE", flush=True)
