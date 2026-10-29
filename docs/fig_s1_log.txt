@@ -1,0 +1,8 @@
+shuffled: p99.9 = 33, max = 34
+natural:  p99 = 94, p99.9 = 166, max = 168
+thr          34   40   60
+src                      
+enhancer    4.0  2.9  1.6
+promoter    6.9  5.9  3.3
+terminator  3.8  2.6  1.7
+saved figures/figS1_threshold.png and .pdf
