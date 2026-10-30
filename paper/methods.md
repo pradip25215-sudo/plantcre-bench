@@ -45,7 +45,7 @@ base. For every sequence $i$ we recorded its best alignment score to any other s
 $$M_i = \max_{j \neq i} S_{ij},$$
 
 taking $M_i = 0$ when BLAST reports no hit. Shuffled sequences
-reached at most 34 (99.9th percentile 31), while 1% of natural sequences reached 94 or more. We used 40
+reached at most 34 (99.9th percentile 33), while 1% of natural sequences reached 94 or more. We used 40
 as the main threshold, above the maximum chance score with room for the larger full database, and
 repeated every analysis at 34 and at 60.
 

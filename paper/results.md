@@ -20,14 +20,14 @@ copy of a training sequence.
 
 We rebuilt the splits so that no homologous pair crosses train and test, assigning whole homology groups to
 train, validation or test, and repeated the evaluation with five seeds (Figure 1b). Against random splits of
-the same sizes, frozen-embedding and 6-mer models lose at most 0.01 R2, which is the size of the
+the same sizes, frozen-embedding and 6-mer models lose at most 0.008 R2, which is the size of the
 seed-to-seed spread, and in several cases they score slightly higher on the homology split than on the random
 one. The published-split result sits inside the same range.
 
 Models with more capacity lose a little more, and only on two of the three datasets. The CNN trained from
 scratch drops by 0.032 R2 on terminators and 0.011 to 0.023 on enhancers, and fine-tuned NT-v2 drops by
 0.013 on tobacco and 0.017 on maize terminators, with every one of six seed-by-assay comparisons in the
-same direction. On promoters neither the CNN nor the fine-tuned model drops at all.
+same direction. On promoters neither the CNN nor the fine-tuned model drops by more than 0.008.
 
 We also split the published test sets by how similar each sequence is to training. If models were reading
 off memorised homologs, the most similar bin would be the easiest. It is not: for AgroNT on tobacco-leaf
@@ -48,7 +48,7 @@ enhancers.
 
 To separate composition from the rest, we regressed each embedding on 6-mer counts and split it into the part
 6-mers predict and a residual. 6-mer counts explain 44% to 52% of embedding variance across models and datasets
-(Figure 2). Adding the residual to 6-mer counts improves prediction by 0.14 to 0.20 R2 on terminators, 0.05 to
+(Figure 2). Adding the residual to 6-mer counts improves prediction by 0.09 to 0.20 R2 on terminators, 0.05 to
 0.10 on promoters, and 0.006 to 0.024 on enhancers. On enhancers the composition part alone predicts better
 than the full embedding (AgroNT 0.466 against 0.432 in light), so what the embedding adds there is noise as
 far as a linear probe is concerned.
@@ -61,9 +61,7 @@ and is not included here.
 ## Fine-tuning closes the gap with supervised models
 
 Fine-tuning all of NT-v2-100M lifts promoter R2 from 0.44 and 0.36 as a frozen probe to 0.700 and 0.677 in
-leaves and protoplasts, matching the published Jores CNN (0.714 and 0.670) and beating our own CNN
-re-implementation (0.668 and 0.650). On terminators it reaches 0.693 and 0.618, above our CNN (0.620 and
-0.540) but below the published DenseNet (0.762 and 0.672).
+leaves and protoplasts, matching the published Jores CNN (0.714 and 0.670) and beating our own CNN re-implementation (0.66 and 0.65). On terminators it reaches 0.693 and 0.618, above our CNN (0.62 and 0.54) but below the published model of Gorjifard et al. (0.762 and 0.672).
 
 The same picture holds for variant effects, where a fine-tuned NT-v2 trained on 100,000 enhancer rows and a
 CNN ensemble trained on the same rows are indistinguishable (Figure 3). Whether a foundation model helps
@@ -82,12 +80,14 @@ sign accuracy 0.43 to 0.54 on pairs with a clear effect, which is chance (Figure
 does not know whether removing a binding site raises or lowers enhancer activity.
 
 Trained models do better but not well. The best Spearman in each condition is 0.37 to 0.56, with 6-mer ridge,
-the CNN and fine-tuned NT-v2 within 0.03 of one another and the frozen embeddings behind them. Against the
-replicate-derived ceiling of 0.85 to 0.94, that is 42% to 60%. A single experimental replicate predicts another
-replicate better than any model does in four of the five conditions: 0.72 against 0.52 in light. Only in the
-warm condition, the noisiest, does the best model come close to one replicate (0.43 against 0.46).
+the CNN and fine-tuned NT-v2 never more than 0.08 apart and the frozen embeddings behind them. Against the
+replicate-derived ceiling of 0.85 to 0.94, that is 42% to 60%. In all five conditions a single experimental replicate predicts another replicate better than any model
+does, by a wide margin in light (0.72 against 0.53) and a narrow one in the noisy warm condition
+(0.46 against 0.44).
 
-Put on the same scale (Figure 4), every model reaches 68% to 84% of its ceiling on wild-type strength but only
-31% to 63% on the effect of mutating one site, a gap of 20 to 35 points for every model. The ordering of models
+Put on the same scale (Figure 4), and leaving maize aside, every model reaches 68% to 84% of its ceiling on
+wild-type strength but only 31% to 63% on the effect of mutating one site, a gap of 21 to 39 points for every
+model. The ordering of models
 is the same for both, so a model that predicts sequence strength well is also the better one at ranking
-mutations, but the skill does not transfer in full. Maize protoplasts are hardest on both axes.
+mutations, but the skill does not transfer in full. Maize protoplasts are the hardest condition on both axes, with wild-type strength at 39% to 58% of its
+ceiling and mutation effects at 20% to 46%.
