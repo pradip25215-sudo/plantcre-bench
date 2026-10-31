@@ -61,14 +61,14 @@ for y, h, t, b in [(0.770, 0.160, "Core promoters", "Jores et al. (2021)\n76,728
 box(ax, X[1], 0.700, W, 0.230, "All-vs-all BLAST",
     "hashFrag settings\nword size 7, both strands\n\n$S = rm + px - g_o g - g_e(e-g)$")
 box(ax, X[1], 0.465, W, 0.200, "Threshold",
-    "shuffled sequences reach\nat most $S = 34$\n\n$\tau = 40$  (also 34 and 60)")
+    "shuffled sequences reach\nat most $S = 34$\n\n$\\tau = 40$  (also 34 and 60)")
 box(ax, X[1], 0.275, W, 0.155, "Homology groups",
-    "edge if $S_{ij} \geq \tau$\nconnected components")
+    "edge if $S_{ij} \\geq \\tau$\nconnected components")
 
 box(ax, X[2], 0.800, W, 0.130, "Published split", "as released")
 box(ax, X[2], 0.635, W, 0.130, "Random split", "80/10/10, five seeds")
 box(ax, X[2], 0.420, W, 0.180, "Homology-aware split",
-    "whole groups assigned\n80/10/10, five seeds\nno pair with $S_{ij} \geq \tau$\nacross train and test")
+    "whole groups assigned\n80/10/10, five seeds\nno pair with $S_{ij} \\geq \\tau$\nacross train and test")
 box(ax, X[2], 0.200, W, 0.185, "Forced split",
     "every group holding a\nvariant WT goes to test\n(Experiment 3 only)")
 
@@ -86,9 +86,9 @@ for k, (t, b) in enumerate(mdl):
 box(ax, X[4], 0.700, W, 0.230, "Experiment 1",
     "homology leakage\n\nR$^2$ on random vs\nhomology-aware splits\n(Fig. 1)")
 box(ax, X[4], 0.465, W, 0.200, "Experiment 2",
-    "composition\n\n$E = \hat{E} + R$\n(Fig. 2)")
+    "composition\n\n$E = \\hat{E} + R$\n(Fig. 2)")
 box(ax, X[4], 0.200, W, 0.230, "Experiment 3",
-    "mutation effects\n\n$\hat{\Delta} = f(x_{mut}) - f(x_{wt})$\nnoise ceiling from replicates\n(Figs. 3 and 4)")
+    "mutation effects\n\n$\\hat{\\Delta} = f(x_{mut}) - f(x_{wt})$\nnoise ceiling from replicates\n(Figs. 3 and 4)")
 
 R = lambda i: X[i] + W  # noqa: E731
 L = lambda i: X[i]      # noqa: E731
@@ -106,7 +106,7 @@ arrow(ax, (R(3), 0.565), (L(4), 0.565))
 arrow(ax, (R(3), 0.315), (L(4), 0.315))
 
 ax.text(0.5, 0.150, "All models are trained and scored on the same splits. R$^2$ is the squared Pearson "
-        "correlation on held-out sequences; mutation effects are scored by Spearman $\rho$.",
+        "correlation on held-out sequences; mutation effects are scored by Spearman $\\rho$.",
         ha="center", va="center", fontsize=6.4, color=K)
 save(fig, "figS2_workflow")
 
@@ -165,7 +165,7 @@ for p, q in ((x0 + len(seq) * cw + 0.012, 0.183), (e1 + 0.006, 0.329), (e2 + 0.0
     arrow(ax, (p, yc), (q, yc))
 
 ax.text(0.5, 0.080,
-        "Loss: $L = \frac{1}{|\Omega|}\sum_{(i,a)\in\Omega}(\hat{z}_{ia} - z_{ia})^2$ over measured "
+        "Loss: $L = \\frac{1}{|\\Omega|}\\sum_{(i,a)\\in\\Omega}(\\hat{z}_{ia} - z_{ia})^2$ over measured "
         "(sequence, assay) pairs.  Adam, learning rate 10$^{-3}$, batch 256, early stopping (patience 5).",
         ha="center", va="center", fontsize=6.4, color=K)
 save(fig, "figS3_cnn")
