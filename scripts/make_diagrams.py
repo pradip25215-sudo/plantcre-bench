@@ -1,8 +1,8 @@
-"""Figure S2 (study workflow) and Figure S3 (CNN architecture), plain black-and-white style.
+"""Figure S3: the CNN trained from scratch, plain black-and-white style.
 
 Text is set in Liberation Serif (same metrics as Times New Roman) for the PNG and PDF; in the SVG the
 font name is written as Times New Roman, so Adobe Illustrator uses the real font and keeps it editable.
-Layer sizes in Figure S3 are copied from scripts/cnn_exp1.py (class CNN).
+Layer sizes are copied from scripts/cnn_exp1.py (class CNN). Figure S2 is drawn by make_s2_icons.py.
 """
 from pathlib import Path
 
@@ -19,13 +19,6 @@ K = "#000000"
 GREY = "#555555"
 
 
-def box(ax, x, y, w, h, title, body, ts=7.0, bs=6.2):
-    ax.add_patch(Rectangle((x, y), w, h, fc="white", ec=K, lw=0.6))
-    ax.text(x + w / 2, y + h - 0.016, title, ha="center", va="top", fontsize=ts, fontweight="bold", color=K)
-    if body:
-        ax.text(x + w / 2, y + h - 0.050, body, ha="center", va="top", fontsize=bs, color=K, linespacing=1.35)
-
-
 def arrow(ax, p, q):
     ax.add_patch(FancyArrowPatch(p, q, arrowstyle="-|>", mutation_scale=6, lw=0.6, color=K,
                                  shrinkA=0, shrinkB=0))
@@ -40,77 +33,6 @@ def save(fig, name):
     print("saved", name)
 
 
-# =============================================================== Figure S2: workflow
-fig = plt.figure(figsize=(7.0, 3.9))
-ax = fig.add_axes([0, 0, 1, 1])
-ax.set_xlim(0, 1)
-ax.set_ylim(0.12, 1)
-ax.axis("off")
-
-W, GAP = 0.170, 0.031
-X = [0.005 + i * (W + GAP) for i in range(5)]
-for x, t in zip(X, ["(1) Data", "(2) Homology search", "(3) Splits", "(4) Models", "(5) Experiments"]):
-    ax.text(x + W / 2, 0.970, t, ha="center", va="center", fontsize=8, fontweight="bold", color=K)
-
-for y, h, t, b in [(0.770, 0.160, "Core promoters", "Jores et al. (2021)\n76,728 sequences\n170 bp, two assays"),
-                   (0.580, 0.160, "Terminators", "Gorjifard et al. (2024)\n53,409 sequences\n170 bp, two assays"),
-                   (0.390, 0.160, "Enhancers", "Jores et al. (2026)\n180,921 sequences\nfive conditions"),
-                   (0.200, 0.160, "Variant pairs", "plantGREP validation set\n741 WT / shuffle pairs\n16 TF families")]:
-    box(ax, X[0], y, W, h, t, b)
-
-box(ax, X[1], 0.700, W, 0.230, "All-vs-all BLAST",
-    "hashFrag settings\nword size 7, both strands\n\n$S = rm + px - g_o g - g_e(e-g)$")
-box(ax, X[1], 0.465, W, 0.200, "Threshold",
-    "shuffled sequences reach\nat most $S = 34$\n\n$\\tau = 40$  (also 34 and 60)")
-box(ax, X[1], 0.275, W, 0.155, "Homology groups",
-    "edge if $S_{ij} \\geq \\tau$\nconnected components")
-
-box(ax, X[2], 0.800, W, 0.130, "Published split", "as released")
-box(ax, X[2], 0.635, W, 0.130, "Random split", "80/10/10, five seeds")
-box(ax, X[2], 0.420, W, 0.180, "Homology-aware split",
-    "whole groups assigned\n80/10/10, five seeds\nno pair with $S_{ij} \\geq \\tau$\nacross train and test")
-box(ax, X[2], 0.200, W, 0.185, "Forced split",
-    "every group holding a\nvariant WT goes to test\n(Experiment 3 only)")
-
-mdl = [("6-mer ridge", "4,096 log counts"),
-       ("NT-v2-100M, frozen", "layer 10 + ridge"),
-       ("AgroNT-1B, frozen", "layer 12 + ridge"),
-       ("CNN", "trained from scratch"),
-       ("NT-v2-100M, fine-tuned", "all weights"),
-       ("Zero-shot score", "no training")]
-top, hgt, gap = 0.930, 0.105, 0.0175
-for k, (t, b) in enumerate(mdl):
-    y = top - hgt - k * (hgt + gap)
-    box(ax, X[3], y, W, hgt, t, b, ts=6.8, bs=6.2)
-
-box(ax, X[4], 0.700, W, 0.230, "Experiment 1",
-    "homology leakage\n\nR$^2$ on random vs\nhomology-aware splits\n(Fig. 1)")
-box(ax, X[4], 0.465, W, 0.200, "Experiment 2",
-    "composition\n\n$E = \\hat{E} + R$\n(Fig. 2)")
-box(ax, X[4], 0.200, W, 0.230, "Experiment 3",
-    "mutation effects\n\n$\\hat{\\Delta} = f(x_{mut}) - f(x_{wt})$\nnoise ceiling from replicates\n(Figs. 3 and 4)")
-
-R = lambda i: X[i] + W  # noqa: E731
-L = lambda i: X[i]      # noqa: E731
-for y in (0.850, 0.660, 0.470):
-    arrow(ax, (R(0), y), (L(1), 0.815))
-arrow(ax, (X[1] + W / 2, 0.700), (X[1] + W / 2, 0.665))
-arrow(ax, (X[1] + W / 2, 0.465), (X[1] + W / 2, 0.430))
-arrow(ax, (R(1), 0.370), (L(2), 0.510))
-arrow(ax, (R(1), 0.300), (L(2), 0.300))
-arrow(ax, (R(0), 0.225), (L(2), 0.225))
-for y in (0.865, 0.700, 0.510, 0.290):
-    arrow(ax, (R(2), y), (L(3), y))
-arrow(ax, (R(3), 0.815), (L(4), 0.815))
-arrow(ax, (R(3), 0.565), (L(4), 0.565))
-arrow(ax, (R(3), 0.315), (L(4), 0.315))
-
-ax.text(0.5, 0.150, "All models are trained and scored on the same splits. R$^2$ is the squared Pearson "
-        "correlation on held-out sequences; mutation effects are scored by Spearman $\\rho$.",
-        ha="center", va="center", fontsize=6.4, color=K)
-save(fig, "figS2_workflow")
-
-# =============================================================== Figure S3: CNN
 fig = plt.figure(figsize=(7.0, 3.3))
 ax = fig.add_axes([0, 0, 1, 1])
 ax.set_xlim(0, 1)
