@@ -1,0 +1,23 @@
+######## CNN Experiment 1: promoters | N=76,728 | assays=['leaf', 'proto']
+cnn original      seed 0 | leaf=0.657 proto=0.655 | 18 epochs, 3.5 min
+cnn random        seed 4 | leaf=0.675 proto=0.654 | 17 epochs, 1.9 min
+cnn random        seed 5 | leaf=0.676 proto=0.644 | 15 epochs, 1.6 min
+cnn homology_t40  seed 4 | leaf=0.649 proto=0.667 | 19 epochs, 2.1 min
+cnn homology_t40  seed 5 | leaf=0.630 proto=0.652 | 18 epochs, 1.9 min
+cnn homology_t60  seed 4 | leaf=0.653 proto=0.639 | 13 epochs, 1.4 min
+cnn homology_t60  seed 5 | leaf=0.674 proto=0.652 | 14 epochs, 1.6 min
+
+######## CNN mean R2 (sd), bin = all
+              mean                                       std                             
+split homology_t40 homology_t60 original random homology_t40 homology_t60 original random
+assay                                                                                    
+leaf         0.639        0.664    0.657  0.675        0.014        0.015      NaN  0.001
+proto        0.660        0.645    0.655  0.649        0.011        0.009      NaN  0.008
+
+######## CNN original split, R2 by homology bin
+bin      all  no hit  <34 (chance)  34-40  40-60  60-100  >=100
+assay                                                          
+leaf   0.657   0.671         0.646  0.685  0.659   0.655  0.657
+proto  0.655   0.600         0.645  0.647  0.635   0.673  0.697
+
+CNN EXP1 DONE promoters

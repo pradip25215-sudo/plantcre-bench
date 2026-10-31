@@ -1,0 +1,38 @@
+nohup: ignoring input
+######## fine-tuning NT-v2-100M: promoters
+  [promoters random] epoch 1: val loss 0.3524 (8.4 min)
+  [promoters random] epoch 2: val loss 0.3307 (8.3 min)
+  [promoters random] epoch 3: val loss 0.3358 (8.4 min)
+  [promoters random] epoch 4: val loss 0.3345 (8.3 min)
+promoters random        leaf   test R2 = 0.700
+promoters random        proto  test R2 = 0.677
+  [promoters homology_t40] epoch 1: val loss 0.3554 (8.3 min)
+  [promoters homology_t40] epoch 2: val loss 0.3240 (8.3 min)
+  [promoters homology_t40] epoch 3: val loss 0.3219 (8.3 min)
+  [promoters homology_t40] epoch 4: val loss 0.3323 (8.3 min)
+promoters homology_t40  leaf   test R2 = 0.700
+promoters homology_t40  proto  test R2 = 0.660
+  [promoters homology_t60] epoch 1: val loss 0.3511 (8.3 min)
+  [promoters homology_t60] epoch 2: val loss 0.3343 (8.3 min)
+  [promoters homology_t60] epoch 3: val loss 0.3467 (8.3 min)
+  [promoters homology_t60] epoch 4: val loss 0.3403 (8.4 min)
+promoters homology_t60  leaf   test R2 = 0.700
+promoters homology_t60  proto  test R2 = 0.668
+
+######## fine-tuning NT-v2-100M: enhancers (Experiment 3 split)
+  [enhancers forced_t40] epoch 1: val loss 0.6087 (13.5 min)
+  [enhancers forced_t40] epoch 2: val loss 0.5712 (13.5 min)
+  [enhancers forced_t40] epoch 3: val loss 0.6053 (13.5 min)
+  [enhancers forced_t40] epoch 4: val loss 0.6306 (13.4 min)
+enhancers test R2 light  = 0.478
+enhancers test R2 dark   = 0.489
+enhancers test R2 warm   = 0.493
+enhancers test R2 cold   = 0.398
+enhancers test R2 maize  = 0.226
+variants light  | WT R2=0.604 | delta rho=+0.534 | sign acc=0.85
+variants dark   | WT R2=0.644 | delta rho=+0.504 | sign acc=0.84
+variants warm   | WT R2=0.622 | delta rho=+0.438 | sign acc=0.77
+variants cold   | WT R2=0.595 | delta rho=+0.509 | sign acc=0.82
+variants maize  | WT R2=0.284 | delta rho=+0.295 | sign acc=0.72
+
+FINETUNE DONE

@@ -1,0 +1,118 @@
+nohup: ignoring input
+
+######## terminators: building 6-mers for 53,409 sequences...
+
+=== terminators / tobacco: train=48,100 test=5,309 ===
+6-mer ridge       R2=0.293 rho=0.528
+NT layer  2       R2=0.155 rho=0.400
+NT layer  4       R2=0.170 rho=0.416
+NT layer  6       R2=0.195 rho=0.447
+NT layer  8       R2=0.342 rho=0.591
+NT layer 10       R2=0.393 rho=0.635
+NT layer 12       R2=0.383 rho=0.629
+NT layer 14       R2=0.375 rho=0.622
+NT layer 16       R2=0.359 rho=0.604
+NT layer 18       R2=0.353 rho=0.599
+NT layer 20       R2=0.356 rho=0.601
+NT layer 22       R2=0.337 rho=0.584
+
+=== terminators / maize: train=48,100 test=5,309 ===
+6-mer ridge       R2=0.425 rho=0.631
+NT layer  2       R2=0.236 rho=0.463
+NT layer  4       R2=0.254 rho=0.480
+NT layer  6       R2=0.259 rho=0.496
+NT layer  8       R2=0.324 rho=0.566
+NT layer 10       R2=0.366 rho=0.609
+NT layer 12       R2=0.351 rho=0.595
+NT layer 14       R2=0.348 rho=0.586
+NT layer 16       R2=0.328 rho=0.570
+NT layer 18       R2=0.331 rho=0.573
+NT layer 20       R2=0.341 rho=0.580
+NT layer 22       R2=0.331 rho=0.573
+
+######## enhancers: building 6-mers for 337,342 sequences...
+
+=== enhancers / light: train=270,414 test=33,300 ===
+6-mer ridge       R2=0.496 rho=0.735
+NT layer  2       R2=0.312 rho=0.588
+NT layer  4       R2=0.321 rho=0.596
+NT layer  6       R2=0.319 rho=0.595
+NT layer  8       R2=0.317 rho=0.592
+NT layer 10       R2=0.361 rho=0.633
+NT layer 12       R2=0.348 rho=0.622
+NT layer 14       R2=0.336 rho=0.612
+NT layer 16       R2=0.326 rho=0.603
+NT layer 18       R2=0.326 rho=0.603
+NT layer 20       R2=0.328 rho=0.604
+NT layer 22       R2=0.335 rho=0.611
+
+=== enhancers / dark: train=270,414 test=33,300 ===
+6-mer ridge       R2=0.540 rho=0.763
+NT layer  2       R2=0.335 rho=0.621
+NT layer  4       R2=0.345 rho=0.627
+NT layer  6       R2=0.344 rho=0.626
+NT layer  8       R2=0.338 rho=0.622
+NT layer 10       R2=0.372 rho=0.653
+NT layer 12       R2=0.362 rho=0.644
+NT layer 14       R2=0.351 rho=0.636
+NT layer 16       R2=0.340 rho=0.628
+NT layer 18       R2=0.340 rho=0.628
+NT layer 20       R2=0.345 rho=0.632
+NT layer 22       R2=0.351 rho=0.636
+
+=== enhancers / warm: train=270,414 test=33,300 ===
+6-mer ridge       R2=0.488 rho=0.737
+NT layer  2       R2=0.316 rho=0.596
+NT layer  4       R2=0.328 rho=0.606
+NT layer  6       R2=0.326 rho=0.605
+NT layer  8       R2=0.323 rho=0.602
+NT layer 10       R2=0.364 rho=0.641
+NT layer 12       R2=0.351 rho=0.631
+NT layer 14       R2=0.340 rho=0.620
+NT layer 16       R2=0.329 rho=0.610
+NT layer 18       R2=0.330 rho=0.611
+NT layer 20       R2=0.333 rho=0.613
+NT layer 22       R2=0.342 rho=0.621
+
+=== enhancers / cold: train=270,414 test=33,300 ===
+6-mer ridge       R2=0.422 rho=0.672
+NT layer  2       R2=0.257 rho=0.531
+NT layer  4       R2=0.267 rho=0.539
+NT layer  6       R2=0.264 rho=0.537
+NT layer  8       R2=0.264 rho=0.536
+NT layer 10       R2=0.302 rho=0.575
+NT layer 12       R2=0.292 rho=0.565
+NT layer 14       R2=0.280 rho=0.554
+NT layer 16       R2=0.271 rho=0.544
+NT layer 18       R2=0.272 rho=0.545
+NT layer 20       R2=0.273 rho=0.547
+NT layer 22       R2=0.280 rho=0.554
+
+=== enhancers / maize: train=270,414 test=33,300 ===
+6-mer ridge       R2=0.283 rho=0.520
+NT layer  2       R2=0.107 rho=0.318
+NT layer  4       R2=0.115 rho=0.328
+NT layer  6       R2=0.117 rho=0.332
+NT layer  8       R2=0.115 rho=0.330
+NT layer 10       R2=0.141 rho=0.367
+NT layer 12       R2=0.131 rho=0.355
+NT layer 14       R2=0.120 rho=0.341
+NT layer 16       R2=0.109 rho=0.326
+NT layer 18       R2=0.111 rho=0.329
+NT layer 20       R2=0.119 rho=0.339
+NT layer 22       R2=0.121 rho=0.344
+
+######## published models (their own test predictions)
+plantGREP CNN  light  R2=0.689  (assuming output order light,dark,warm,cold,maize)
+plantGREP CNN  dark   R2=0.728  (assuming output order light,dark,warm,cold,maize)
+plantGREP CNN  warm   R2=0.661  (assuming output order light,dark,warm,cold,maize)
+plantGREP CNN  cold   R2=0.606  (assuming output order light,dark,warm,cold,maize)
+plantGREP CNN  maize  R2=0.498  (assuming output order light,dark,warm,cold,maize)
+published 6-mer lm light  R2=0.497
+published 6-mer lm dark   R2=0.540
+published 6-mer lm warm   R2=0.488
+published 6-mer lm cold   R2=0.422
+published 6-mer lm maize  R2=0.286
+terminator prediction file columns: ['id', 'enrichment_tobacco', 'enrichment_maize', 'set', 'species', 'enrichment_tobacco_predictions', 'enrichment_maize_predictions']
+
+saved results/probe_original_split_terminators_enhancers.tsv

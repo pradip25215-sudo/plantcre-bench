@@ -1,0 +1,98 @@
+nohup: ignoring input
+################ terminators  (Sat Oct 17 06:27:03 PDT 2026)
+blastn: /home/pradip/miniforge3/envs/hashfrag/bin/blastn | blastn: 2.17.0+
+fasta=/home/pradip/plantcre/data/homology/terminators_all.fa label=terminators_min20 parallel=24 min_raw=20 max_target=10000
+2026-10-17 06:27:04 - hashFrag.blastn_module - INFO - Calling module...
+2026-10-17 06:27:04 - hashFrag.blastn_module - INFO - One FASTA files detected. Computing pairwise BLAST comparisons for all sequence-pairs...
+2026-10-17 06:27:04 - hashFrag.blastn_module - INFO - Generating reverse complement ref sequences...
+2026-10-17 06:27:06 - hashFrag.blastn_module - INFO - BLASTn output: 
+
+Building a new DB, current time: 10/17/2026 06:27:04
+New DB name:   /home/pradip/plantcre/data/homology/terminators_min20.work/terminators_min20.blastdb
+New DB title:  terminators_min20
+Sequence type: Nucleotide
+Keep MBits: T
+Maximum file size: 3000000000B
+Adding sequences from FASTA; added 106818 sequences in 1.8887 seconds.
+
+
+
+2026-10-17 06:27:06 - hashFrag.blastn_module - INFO - BLAST DataBase construction finished and written to: /home/pradip/plantcre/data/homology/terminators_min20.work/terminators_min20.blastdb
+2026-10-17 06:27:06 - hashFrag.blastn_module - INFO - Module execution completed.
+
+chunks: 24
+
+real	7m25.429s
+user	169m51.200s
+sys	0m11.380s
+2026-10-17 06:34:32 - hashFrag.process_blast_results_module - INFO - Calling module...
+2026-10-17 06:34:35 - hashFrag.process_blast_results_module - INFO - Processed BLASTn results written to: /home/pradip/plantcre/data/homology/terminators_min20.work/terminators_min20.processed.tsv
+2026-10-17 06:34:35 - hashFrag.process_blast_results_module - INFO - Module execution completed.
+
+1151467 /home/pradip/plantcre/data/homology/terminators_min20.work/terminators_min20.processed.tsv
+BLAST ALL DONE: terminators_min20
+################ promoters  (Sat Oct 17 06:34:35 PDT 2026)
+blastn: /home/pradip/miniforge3/envs/hashfrag/bin/blastn | blastn: 2.17.0+
+fasta=/home/pradip/plantcre/data/homology/promoters_all.fa label=promoters_min20 parallel=24 min_raw=20 max_target=10000
+2026-10-17 06:34:35 - hashFrag.blastn_module - INFO - Calling module...
+2026-10-17 06:34:35 - hashFrag.blastn_module - INFO - One FASTA files detected. Computing pairwise BLAST comparisons for all sequence-pairs...
+2026-10-17 06:34:35 - hashFrag.blastn_module - INFO - Generating reverse complement ref sequences...
+2026-10-17 06:34:39 - hashFrag.blastn_module - INFO - BLASTn output: 
+
+Building a new DB, current time: 10/17/2026 06:34:36
+New DB name:   /home/pradip/plantcre/data/homology/promoters_min20.work/promoters_min20.blastdb
+New DB title:  promoters_min20
+Sequence type: Nucleotide
+Keep MBits: T
+Maximum file size: 3000000000B
+Adding sequences from FASTA; added 153456 sequences in 3.06753 seconds.
+
+
+
+2026-10-17 06:34:39 - hashFrag.blastn_module - INFO - BLAST DataBase construction finished and written to: /home/pradip/plantcre/data/homology/promoters_min20.work/promoters_min20.blastdb
+2026-10-17 06:34:39 - hashFrag.blastn_module - INFO - Module execution completed.
+
+chunks: 24
+
+real	12m32.863s
+user	276m43.336s
+sys	0m24.224s
+2026-10-17 06:47:13 - hashFrag.process_blast_results_module - INFO - Calling module...
+2026-10-17 06:47:19 - hashFrag.process_blast_results_module - INFO - Processed BLASTn results written to: /home/pradip/plantcre/data/homology/promoters_min20.work/promoters_min20.processed.tsv
+2026-10-17 06:47:19 - hashFrag.process_blast_results_module - INFO - Module execution completed.
+
+2553809 /home/pradip/plantcre/data/homology/promoters_min20.work/promoters_min20.processed.tsv
+BLAST ALL DONE: promoters_min20
+################ enhancers  (Sat Oct 17 06:47:19 PDT 2026)
+blastn: /home/pradip/miniforge3/envs/hashfrag/bin/blastn | blastn: 2.17.0+
+fasta=/home/pradip/plantcre/data/homology/enhancers_all.fa label=enhancers_min20 parallel=24 min_raw=20 max_target=10000
+2026-10-17 06:47:19 - hashFrag.blastn_module - INFO - Calling module...
+2026-10-17 06:47:19 - hashFrag.blastn_module - INFO - One FASTA files detected. Computing pairwise BLAST comparisons for all sequence-pairs...
+2026-10-17 06:47:19 - hashFrag.blastn_module - INFO - Generating reverse complement ref sequences...
+2026-10-17 06:47:27 - hashFrag.blastn_module - INFO - BLASTn output: 
+
+Building a new DB, current time: 10/17/2026 06:47:20
+New DB name:   /home/pradip/plantcre/data/homology/enhancers_min20.work/enhancers_min20.blastdb
+New DB title:  enhancers_min20
+Sequence type: Nucleotide
+Keep MBits: T
+Maximum file size: 3000000000B
+Adding sequences from FASTA; added 361842 sequences in 6.28378 seconds.
+
+
+
+2026-10-17 06:47:27 - hashFrag.blastn_module - INFO - BLAST DataBase construction finished and written to: /home/pradip/plantcre/data/homology/enhancers_min20.work/enhancers_min20.blastdb
+2026-10-17 06:47:27 - hashFrag.blastn_module - INFO - Module execution completed.
+
+chunks: 24
+
+real	79m38.284s
+user	1790m52.092s
+sys	2m7.100s
+2026-10-17 08:07:07 - hashFrag.process_blast_results_module - INFO - Calling module...
+2026-10-17 08:07:43 - hashFrag.process_blast_results_module - INFO - Processed BLASTn results written to: /home/pradip/plantcre/data/homology/enhancers_min20.work/enhancers_min20.processed.tsv
+2026-10-17 08:07:43 - hashFrag.process_blast_results_module - INFO - Module execution completed.
+
+15831231 /home/pradip/plantcre/data/homology/enhancers_min20.work/enhancers_min20.processed.tsv
+BLAST ALL DONE: enhancers_min20
+FULL HOMOLOGY DONE (Sat Oct 17 08:07:43 PDT 2026)

@@ -1,0 +1,64 @@
+nohup: ignoring input
+######## Experiment 1: enhancers | units=180,921 | rows=337,342
+building 6-mers...
+6mer       light   original=0.496 | random=0.488+-0.007 | homology_t40=0.478+-0.007 | homology_t60=0.483+-0.013
+6mer       dark    original=0.540 | random=0.536+-0.003 | homology_t40=0.527+-0.011 | homology_t60=0.528+-0.012
+6mer       warm    original=0.488 | random=0.482+-0.007 | homology_t40=0.476+-0.003 | homology_t60=0.481+-0.006
+6mer       cold    original=0.422 | random=0.416+-0.007 | homology_t40=0.407+-0.010 | homology_t60=0.411+-0.012
+6mer       maize   original=0.283 | random=0.285+-0.005 | homology_t40=0.277+-0.019 | homology_t60=0.281+-0.012
+
+[ntv2_100m] layer chosen on validation: light=L10 (val R2 0.356), dark=L10 (val R2 0.361), warm=L10 (val R2 0.361), cold=L10 (val R2 0.293), maize=L10 (val R2 0.136)
+ntv2_100m  light   original=0.361 | random=0.359+-0.002 | homology_t40=0.352+-0.010 | homology_t60=0.354+-0.016
+ntv2_100m  dark    original=0.372 | random=0.367+-0.004 | homology_t40=0.362+-0.011 | homology_t60=0.360+-0.016
+ntv2_100m  warm    original=0.364 | random=0.363+-0.003 | homology_t40=0.361+-0.005 | homology_t60=0.362+-0.007
+ntv2_100m  cold    original=0.302 | random=0.300+-0.002 | homology_t40=0.294+-0.011 | homology_t60=0.295+-0.014
+ntv2_100m  maize   original=0.141 | random=0.138+-0.003 | homology_t40=0.131+-0.008 | homology_t60=0.136+-0.007
+
+[agront_1b] layer chosen on validation: light=L12 (val R2 0.424), dark=L12 (val R2 0.439), warm=L12 (val R2 0.431), cold=L12 (val R2 0.354), maize=L12 (val R2 0.195)
+agront_1b  light   original=0.436 | random=0.434+-0.005 | homology_t40=0.424+-0.011 | homology_t60=0.427+-0.017
+agront_1b  dark    original=0.452 | random=0.446+-0.003 | homology_t40=0.440+-0.014 | homology_t60=0.439+-0.017
+agront_1b  warm    original=0.440 | random=0.438+-0.005 | homology_t40=0.432+-0.004 | homology_t60=0.436+-0.008
+agront_1b  cold    original=0.370 | random=0.368+-0.005 | homology_t40=0.359+-0.013 | homology_t60=0.362+-0.016
+agront_1b  maize   original=0.204 | random=0.200+-0.004 | homology_t40=0.197+-0.012 | homology_t60=0.197+-0.009
+
+######## mean R2 (sd) over seeds, bin = all
+                        mean                                       std                             
+split           homology_t40 homology_t60 original random homology_t40 homology_t60 original random
+assay model                                                                                        
+cold  6mer             0.407        0.411    0.422  0.416        0.011        0.014      NaN  0.007
+      agront_1b        0.359        0.362    0.370  0.368        0.015        0.017      NaN  0.006
+      ntv2_100m        0.294        0.295    0.302  0.300        0.012        0.016      NaN  0.002
+dark  6mer             0.527        0.528    0.540  0.536        0.012        0.014      NaN  0.003
+      agront_1b        0.440        0.439    0.452  0.446        0.015        0.019      NaN  0.003
+      ntv2_100m        0.362        0.360    0.372  0.367        0.012        0.018      NaN  0.005
+light 6mer             0.478        0.483    0.496  0.488        0.008        0.014      NaN  0.008
+      agront_1b        0.424        0.427    0.436  0.434        0.012        0.019      NaN  0.006
+      ntv2_100m        0.352        0.354    0.361  0.359        0.011        0.017      NaN  0.002
+maize 6mer             0.277        0.281    0.283  0.285        0.021        0.013      NaN  0.006
+      agront_1b        0.197        0.197    0.204  0.200        0.014        0.010      NaN  0.004
+      ntv2_100m        0.131        0.136    0.141  0.138        0.009        0.008      NaN  0.003
+warm  6mer             0.476        0.481    0.488  0.482        0.004        0.007      NaN  0.008
+      agront_1b        0.432        0.436    0.440  0.438        0.005        0.009      NaN  0.006
+      ntv2_100m        0.361        0.362    0.364  0.363        0.005        0.008      NaN  0.003
+
+######## original split, R2 by homology bin
+bin                all  no hit  <34 (chance)  34-40  40-60  60-100  >=100
+assay model                                                              
+cold  6mer       0.422   0.307         0.425  0.440  0.431   0.392  0.433
+      agront_1b  0.370   0.216         0.376  0.390  0.373   0.342  0.377
+      ntv2_100m  0.302   0.178         0.313  0.325  0.294   0.269  0.300
+dark  6mer       0.540   0.431         0.546  0.580  0.512   0.516  0.541
+      agront_1b  0.452   0.280         0.459  0.494  0.425   0.431  0.455
+      ntv2_100m  0.372   0.223         0.384  0.430  0.329   0.336  0.376
+light 6mer       0.496   0.370         0.495  0.531  0.505   0.486  0.499
+      agront_1b  0.436   0.274         0.438  0.476  0.437   0.424  0.438
+      ntv2_100m  0.361   0.225         0.369  0.406  0.348   0.339  0.355
+maize 6mer       0.283   0.278         0.276  0.260  0.283   0.302  0.301
+      agront_1b  0.204   0.213         0.193  0.177  0.227   0.220  0.226
+      ntv2_100m  0.141   0.130         0.129  0.117  0.173   0.169  0.151
+warm  6mer       0.488   0.352         0.485  0.536  0.495   0.493  0.474
+      agront_1b  0.440   0.266         0.438  0.495  0.448   0.439  0.427
+      ntv2_100m  0.364   0.220         0.369  0.417  0.351   0.357  0.343
+
+saved results/exp1_enhancers_nf.tsv
+EXP1 DONE enhancers

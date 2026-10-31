@@ -1,0 +1,66 @@
+nohup: ignoring input
+
+################ terminators
+sequences=53,409 | candidate pairs (score>=20)=523,460
+
+-- threshold 34: 19,998 homologous pairs | groups=41,071 | largest group=827 (1.55% of data) | sequences with >=1 homolog=38.2%
+   seed 1 split fractions={'train': 0.8, 'test': 0.1, 'val': 0.1} | homologous pairs crossing train/test=0 (must be 0)
+
+-- threshold 40: 16,145 homologous pairs | groups=42,604 | largest group=113 (0.21% of data) | sequences with >=1 homolog=34.8%
+   seed 1 split fractions={'train': 0.8, 'val': 0.1, 'test': 0.1} | homologous pairs crossing train/test=0 (must be 0)
+
+-- threshold 60: 11,590 homologous pairs | groups=45,013 | largest group=59 (0.11% of data) | sequences with >=1 homolog=28.0%
+   seed 1 split fractions={'train': 0.8, 'val': 0.1, 'test': 0.1} | homologous pairs crossing train/test=0 (must be 0)
+
+== ORIGINAL split (split): 5,309 test sequences
+   test sequences with a train homolog at >= 34: 1,885 (35.51%)
+   test sequences with a train homolog at >= 40: 1,717 (32.34%)
+   test sequences with a train homolog at >= 60: 1,345 (25.33%)
+   max-score-to-train bins: {'no hit': 452, '<34 (chance)': 2972, '34-40': 168, '40-60': 372, '60-100': 594, '>=100': 751}
+
+################ promoters
+sequences=76,728 | candidate pairs (score>=20)=1,228,481
+
+-- threshold 34: 357,649 homologous pairs | groups=54,447 | largest group=7,031 (9.16% of data) | sequences with >=1 homolog=41.3%
+   seed 1 split fractions={'train': 0.8, 'val': 0.1, 'test': 0.1} | homologous pairs crossing train/test=0 (must be 0)
+
+-- threshold 40: 260,414 homologous pairs | groups=57,980 | largest group=3,819 (4.98% of data) | sequences with >=1 homolog=36.1%
+   seed 1 split fractions={'train': 0.8, 'test': 0.1, 'val': 0.1} | homologous pairs crossing train/test=0 (must be 0)
+
+-- threshold 60: 90,145 homologous pairs | groups=64,898 | largest group=1,083 (1.41% of data) | sequences with >=1 homolog=24.1%
+   seed 1 split fractions={'train': 0.8, 'test': 0.1, 'val': 0.1} | homologous pairs crossing train/test=0 (must be 0)
+
+== ORIGINAL split (split_leaf): 7,154 test sequences
+   test sequences with a train homolog at >= 34: 2,716 (37.96%)
+   test sequences with a train homolog at >= 40: 2,351 (32.86%)
+   test sequences with a train homolog at >= 60: 1,577 (22.04%)
+   max-score-to-train bins: {'no hit': 640, '<34 (chance)': 3798, '34-40': 365, '40-60': 774, '60-100': 930, '>=100': 647}
+
+== ORIGINAL split (split_proto): 7,595 test sequences
+   test sequences with a train homolog at >= 34: 3,007 (39.59%)
+   test sequences with a train homolog at >= 40: 2,611 (34.38%)
+   test sequences with a train homolog at >= 60: 1,733 (22.82%)
+   max-score-to-train bins: {'no hit': 555, '<34 (chance)': 4033, '34-40': 396, '40-60': 878, '60-100': 1063, '>=100': 670}
+
+################ enhancers
+sequences=180,921 | candidate pairs (score>=20)=7,703,095
+
+-- threshold 34: 333,284 homologous pairs | groups=113,606 | largest group=37,744 (20.86% of data) | sequences with >=1 homolog=48.4%
+   variant-WT groups forced to test: 507 groups, 38,861 sequences
+   seed 1 split fractions={'train': 0.699, 'test': 0.213, 'val': 0.088} | homologous pairs crossing train/test=0 (must be 0)
+
+-- threshold 40: 209,777 homologous pairs | groups=126,305 | largest group=21,697 (11.99% of data) | sequences with >=1 homolog=41.6%
+   variant-WT groups forced to test: 579 groups, 25,460 sequences
+   seed 1 split fractions={'train': 0.763, 'test': 0.141, 'val': 0.095} | homologous pairs crossing train/test=0 (must be 0)
+
+-- threshold 60: 111,328 homologous pairs | groups=139,295 | largest group=13,330 (7.37% of data) | sequences with >=1 homolog=32.6%
+   variant-WT groups forced to test: 632 groups, 15,625 sequences
+   seed 1 split fractions={'train': 0.799, 'test': 0.101, 'val': 0.1} | homologous pairs crossing train/test=0 (must be 0)
+
+== ORIGINAL split (split): 17,872 test sequences
+   test sequences with a train homolog at >= 34: 7,631 (42.70%)
+   test sequences with a train homolog at >= 40: 6,447 (36.07%)
+   test sequences with a train homolog at >= 60: 4,974 (27.83%)
+   max-score-to-train bins: {'no hit': 417, '<34 (chance)': 9824, '34-40': 1184, '40-60': 1473, '60-100': 2744, '>=100': 2230}
+
+SPLITS DONE

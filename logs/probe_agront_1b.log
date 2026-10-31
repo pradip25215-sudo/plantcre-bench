@@ -1,0 +1,111 @@
+nohup: ignoring input
+
+######## agront_1b / promoters
+layer  4 | leaf    R2=0.410 rho=0.625
+layer  4 | proto   R2=0.329 rho=0.562
+layer  8 | leaf    R2=0.456 rho=0.662
+layer  8 | proto   R2=0.413 rho=0.627
+layer 12 | leaf    R2=0.530 rho=0.722
+layer 12 | proto   R2=0.502 rho=0.692
+layer 16 | leaf    R2=0.502 rho=0.698
+layer 16 | proto   R2=0.459 rho=0.660
+layer 20 | leaf    R2=0.466 rho=0.672
+layer 20 | proto   R2=0.417 rho=0.626
+layer 24 | leaf    R2=0.438 rho=0.650
+layer 24 | proto   R2=0.387 rho=0.603
+layer 28 | leaf    R2=0.420 rho=0.636
+layer 28 | proto   R2=0.361 rho=0.586
+layer 32 | leaf    R2=0.405 rho=0.624
+layer 32 | proto   R2=0.342 rho=0.569
+layer 36 | leaf    R2=0.398 rho=0.617
+layer 36 | proto   R2=0.324 rho=0.554
+layer 40 | leaf    R2=0.395 rho=0.615
+layer 40 | proto   R2=0.313 rho=0.545
+
+######## agront_1b / terminators
+layer  4 | tobacco R2=0.375 rho=0.618
+layer  4 | maize   R2=0.359 rho=0.589
+layer  8 | tobacco R2=0.437 rho=0.671
+layer  8 | maize   R2=0.418 rho=0.641
+layer 12 | tobacco R2=0.456 rho=0.680
+layer 12 | maize   R2=0.462 rho=0.669
+layer 16 | tobacco R2=0.430 rho=0.661
+layer 16 | maize   R2=0.436 rho=0.650
+layer 20 | tobacco R2=0.393 rho=0.628
+layer 20 | maize   R2=0.399 rho=0.621
+layer 24 | tobacco R2=0.354 rho=0.596
+layer 24 | maize   R2=0.373 rho=0.600
+layer 28 | tobacco R2=0.327 rho=0.574
+layer 28 | maize   R2=0.345 rho=0.576
+layer 32 | tobacco R2=0.301 rho=0.555
+layer 32 | maize   R2=0.324 rho=0.557
+layer 36 | tobacco R2=0.285 rho=0.538
+layer 36 | maize   R2=0.308 rho=0.541
+layer 40 | tobacco R2=0.261 rho=0.515
+layer 40 | maize   R2=0.302 rho=0.537
+
+######## agront_1b / enhancers
+layer  4 | light   R2=0.343 rho=0.614
+layer  4 | dark    R2=0.364 rho=0.641
+layer  4 | warm    R2=0.349 rho=0.624
+layer  4 | cold    R2=0.287 rho=0.556
+layer  4 | maize   R2=0.130 rho=0.351
+layer  8 | light   R2=0.384 rho=0.649
+layer  8 | dark    R2=0.401 rho=0.673
+layer  8 | warm    R2=0.391 rho=0.662
+layer  8 | cold    R2=0.324 rho=0.591
+layer  8 | maize   R2=0.158 rho=0.391
+layer 12 | light   R2=0.436 rho=0.689
+layer 12 | dark    R2=0.452 rho=0.709
+layer 12 | warm    R2=0.440 rho=0.701
+layer 12 | cold    R2=0.370 rho=0.629
+layer 12 | maize   R2=0.204 rho=0.446
+layer 16 | light   R2=0.425 rho=0.681
+layer 16 | dark    R2=0.439 rho=0.700
+layer 16 | warm    R2=0.427 rho=0.691
+layer 16 | cold    R2=0.359 rho=0.621
+layer 16 | maize   R2=0.188 rho=0.426
+layer 20 | light   R2=0.402 rho=0.664
+layer 20 | dark    R2=0.416 rho=0.685
+layer 20 | warm    R2=0.408 rho=0.676
+layer 20 | cold    R2=0.339 rho=0.605
+layer 20 | maize   R2=0.172 rho=0.405
+layer 24 | light   R2=0.386 rho=0.651
+layer 24 | dark    R2=0.396 rho=0.670
+layer 24 | warm    R2=0.392 rho=0.664
+layer 24 | cold    R2=0.324 rho=0.592
+layer 24 | maize   R2=0.155 rho=0.387
+layer 28 | light   R2=0.373 rho=0.640
+layer 28 | dark    R2=0.384 rho=0.661
+layer 28 | warm    R2=0.380 rho=0.653
+layer 28 | cold    R2=0.313 rho=0.581
+layer 28 | maize   R2=0.142 rho=0.370
+layer 32 | light   R2=0.358 rho=0.629
+layer 32 | dark    R2=0.372 rho=0.651
+layer 32 | warm    R2=0.366 rho=0.641
+layer 32 | cold    R2=0.300 rho=0.570
+layer 32 | maize   R2=0.133 rho=0.357
+layer 36 | light   R2=0.349 rho=0.621
+layer 36 | dark    R2=0.360 rho=0.641
+layer 36 | warm    R2=0.357 rho=0.634
+layer 36 | cold    R2=0.293 rho=0.564
+layer 36 | maize   R2=0.125 rho=0.347
+layer 40 | light   R2=0.348 rho=0.620
+layer 40 | dark    R2=0.359 rho=0.642
+layer 40 | warm    R2=0.354 rho=0.632
+layer 40 | cold    R2=0.289 rho=0.560
+layer 40 | maize   R2=0.123 rho=0.344
+
+######## best layer per task
+    dataset   assay  layer    r2  spearman
+  enhancers    cold     12 0.370     0.629
+  enhancers    dark     12 0.452     0.709
+  enhancers   light     12 0.436     0.689
+  enhancers   maize     12 0.204     0.446
+  enhancers    warm     12 0.440     0.701
+  promoters    leaf     12 0.530     0.722
+  promoters   proto     12 0.502     0.692
+terminators   maize     12 0.462     0.669
+terminators tobacco     12 0.456     0.680
+
+saved results/probe_agront_1b_original_split.tsv

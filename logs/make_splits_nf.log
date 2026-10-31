@@ -1,0 +1,20 @@
+
+################ enhancers
+sequences=180,921 | candidate pairs (score>=20)=7,703,095
+
+-- threshold 34: 333,284 homologous pairs | groups=113,606 | largest group=37,744 (20.86% of data) | sequences with >=1 homolog=48.4%
+   seed 1 split fractions={'train': 0.8, 'test': 0.1, 'val': 0.1} | homologous pairs crossing train/test=0 (must be 0)
+
+-- threshold 40: 209,777 homologous pairs | groups=126,305 | largest group=21,697 (11.99% of data) | sequences with >=1 homolog=41.6%
+   seed 1 split fractions={'train': 0.8, 'test': 0.1, 'val': 0.1} | homologous pairs crossing train/test=0 (must be 0)
+
+-- threshold 60: 111,328 homologous pairs | groups=139,295 | largest group=13,330 (7.37% of data) | sequences with >=1 homolog=32.6%
+   seed 1 split fractions={'train': 0.787, 'val': 0.115, 'test': 0.098} | homologous pairs crossing train/test=0 (must be 0)
+
+== ORIGINAL split (split): 17,872 test sequences
+   test sequences with a train homolog at >= 34: 7,631 (42.70%)
+   test sequences with a train homolog at >= 40: 6,447 (36.07%)
+   test sequences with a train homolog at >= 60: 4,974 (27.83%)
+   max-score-to-train bins: {'no hit': 417, '<34 (chance)': 9824, '34-40': 1184, '40-60': 1473, '60-100': 2744, '>=100': 2230}
+
+SPLITS DONE

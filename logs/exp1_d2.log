@@ -1,0 +1,82 @@
+nohup: ignoring input
+D2: 2,199 control rows in the dataset, left out of all test metrics
+######## Experiment 1: terminators | units=53,409 | rows=53,409
+building 6-mers...
+6mer       tobacco original=0.295 | random=0.260+-0.009 | homology_t40=0.261+-0.008 | homology_t60=0.258+-0.012
+6mer       maize   original=0.428 | random=0.425+-0.005 | homology_t40=0.413+-0.006 | homology_t60=0.419+-0.004
+
+[ntv2_100m] layer chosen on validation: tobacco=L10 (val R2 0.398), maize=L10 (val R2 0.396)
+ntv2_100m  tobacco original=0.393 | random=0.388+-0.011 | homology_t40=0.388+-0.008 | homology_t60=0.385+-0.010
+ntv2_100m  maize   original=0.365 | random=0.377+-0.005 | homology_t40=0.373+-0.009 | homology_t60=0.378+-0.007
+
+[agront_1b] layer chosen on validation: tobacco=L12 (val R2 0.455), maize=L12 (val R2 0.470)
+agront_1b  tobacco original=0.455 | random=0.451+-0.008 | homology_t40=0.452+-0.006 | homology_t60=0.447+-0.010
+agront_1b  maize   original=0.462 | random=0.464+-0.004 | homology_t40=0.454+-0.011 | homology_t60=0.459+-0.010
+
+######## mean R2 (sd) over seeds, bin = all
+                          mean                                       std                             
+split             homology_t40 homology_t60 original random homology_t40 homology_t60 original random
+assay   model                                                                                        
+maize   6mer             0.413        0.419    0.428  0.425        0.007        0.005      NaN  0.006
+        agront_1b        0.454        0.459    0.462  0.464        0.012        0.011      NaN  0.005
+        ntv2_100m        0.373        0.378    0.365  0.377        0.010        0.008      NaN  0.005
+tobacco 6mer             0.261        0.258    0.295  0.260        0.009        0.013      NaN  0.011
+        agront_1b        0.452        0.447    0.455  0.451        0.006        0.011      NaN  0.009
+        ntv2_100m        0.388        0.385    0.393  0.388        0.009        0.011      NaN  0.012
+
+######## original split, R2 by homology bin
+bin                  all  no hit  <34 (chance)  34-40  40-60  60-100  >=100
+assay   model                                                              
+maize   6mer       0.428   0.381         0.434  0.477  0.451   0.399  0.439
+        agront_1b  0.462   0.436         0.466  0.519  0.473   0.410  0.486
+        ntv2_100m  0.365   0.350         0.370  0.327  0.339   0.369  0.383
+tobacco 6mer       0.295   0.288         0.273  0.312  0.300   0.295  0.303
+        agront_1b  0.455   0.355         0.448  0.428  0.506   0.480  0.414
+        ntv2_100m  0.393   0.319         0.387  0.323  0.432   0.398  0.374
+
+saved results/exp1_terminators_d2.tsv
+EXP1 DONE terminators
+D2: 0 control rows in the dataset, left out of all test metrics
+######## Experiment 1: promoters | units=76,728 | rows=76,728
+building 6-mers...
+6mer       leaf    original=0.483 | random=0.485+-0.003 | homology_t40=0.482+-0.003 | homology_t60=0.472+-0.004
+6mer       proto   original=0.448 | random=0.437+-0.006 | homology_t40=0.444+-0.008 | homology_t60=0.433+-0.005
+
+[ntv2_100m] layer chosen on validation: leaf=L10 (val R2 0.428), proto=L10 (val R2 0.371)
+ntv2_100m  leaf    original=0.435 | random=0.442+-0.005 | homology_t40=0.439+-0.006 | homology_t60=0.432+-0.003
+ntv2_100m  proto   original=0.364 | random=0.362+-0.007 | homology_t40=0.374+-0.007 | homology_t60=0.362+-0.009
+
+[agront_1b] layer chosen on validation: leaf=L12 (val R2 0.526), proto=L12 (val R2 0.512)
+agront_1b  leaf    original=0.530 | random=0.539+-0.004 | homology_t40=0.534+-0.010 | homology_t60=0.527+-0.003
+agront_1b  proto   original=0.502 | random=0.499+-0.004 | homology_t40=0.508+-0.008 | homology_t60=0.497+-0.011
+
+######## mean R2 (sd) over seeds, bin = all
+                        mean                                       std                             
+split           homology_t40 homology_t60 original random homology_t40 homology_t60 original random
+assay model                                                                                        
+leaf  6mer             0.482        0.472    0.483  0.485        0.004        0.005      NaN  0.003
+      agront_1b        0.534        0.527    0.530  0.539        0.011        0.003      NaN  0.005
+      ntv2_100m        0.439        0.432    0.435  0.442        0.007        0.004      NaN  0.005
+proto 6mer             0.444        0.433    0.448  0.437        0.009        0.005      NaN  0.006
+      agront_1b        0.508        0.497    0.502  0.499        0.009        0.013      NaN  0.004
+      ntv2_100m        0.374        0.362    0.364  0.362        0.008        0.010      NaN  0.008
+
+######## original split, R2 by homology bin
+bin                all  no hit  <34 (chance)  34-40  40-60  60-100  >=100
+assay model                                                              
+leaf  6mer       0.483   0.458         0.479  0.506  0.484   0.479  0.503
+      agront_1b  0.530   0.463         0.531  0.549  0.518   0.527  0.556
+      ntv2_100m  0.435   0.407         0.444  0.473  0.427   0.417  0.395
+proto 6mer       0.448   0.446         0.431  0.457  0.425   0.469  0.483
+      agront_1b  0.502   0.463         0.488  0.471  0.497   0.523  0.536
+      ntv2_100m  0.364   0.326         0.362  0.419  0.312   0.358  0.363
+
+saved results/exp1_promoters_d2.tsv
+EXP1 DONE promoters
+D2: 66 control rows in the dataset, left out of all test metrics
+######## Experiment 1: enhancers | units=180,921 | rows=337,342
+building 6-mers...
+6mer       light   original=0.495 | random=0.488+-0.007 | homology_t40=0.478+-0.007 | homology_t60=0.483+-0.013
+6mer       dark    original=0.540 | random=0.536+-0.003 | homology_t40=0.527+-0.011 | homology_t60=0.528+-0.012
+6mer       warm    original=0.488 | random=0.482+-0.007 | homology_t40=0.476+-0.003 | homology_t60=0.481+-0.006
+bash: line 1: 169423 Killed                  EXCL_CONTROLS=1 SPLITTAG=_nf OMP_NUM_THREADS=16 OPENBLAS_NUM_THREADS=16 MKL_NUM_THREADS=16 python -u scripts/exp1_homology.py enhancers

@@ -1,0 +1,85 @@
+nohup: ignoring input
+######## CNN Experiment 1: promoters | N=76,728 | assays=['leaf', 'proto']
+cnn original      seed 0 | leaf=0.668 proto=0.650 | 15 epochs, 3.9 min
+cnn random        seed 1 | leaf=0.645 proto=0.654 | 18 epochs, 1.9 min
+cnn random        seed 2 | leaf=0.624 proto=0.618 | 8 epochs, 0.8 min
+cnn random        seed 3 | leaf=0.655 proto=0.636 | 11 epochs, 1.1 min
+cnn homology_t40  seed 1 | leaf=0.618 proto=0.621 | 9 epochs, 0.9 min
+cnn homology_t40  seed 2 | leaf=0.668 proto=0.646 | 15 epochs, 1.6 min
+cnn homology_t40  seed 3 | leaf=0.662 proto=0.628 | 17 epochs, 1.8 min
+cnn homology_t60  seed 1 | leaf=0.469 proto=0.309 | 13 epochs, 1.4 min
+cnn homology_t60  seed 2 | leaf=0.662 proto=0.650 | 14 epochs, 1.5 min
+cnn homology_t60  seed 3 | leaf=0.629 proto=0.630 | 17 epochs, 1.8 min
+
+######## CNN mean R2 (sd), bin = all
+              mean                                       std                             
+split homology_t40 homology_t60 original random homology_t40 homology_t60 original random
+assay                                                                                    
+leaf         0.649        0.587    0.668  0.641        0.027        0.103      NaN  0.016
+proto        0.631        0.530    0.650  0.636        0.013        0.192      NaN  0.018
+
+######## CNN original split, R2 by homology bin
+bin      all  no hit  <34 (chance)  34-40  40-60  60-100  >=100
+assay                                                          
+leaf   0.668   0.664         0.658  0.685  0.658   0.669  0.694
+proto  0.650   0.581         0.634  0.656  0.646   0.681  0.700
+
+CNN EXP1 DONE promoters
+######## CNN Experiment 1: terminators | N=53,409 | assays=['tobacco', 'maize']
+cnn original      seed 0 | tobacco=0.624 maize=0.549 | 13 epochs, 1.2 min
+cnn random        seed 1 | tobacco=0.571 maize=0.543 | 10 epochs, 0.8 min
+cnn random        seed 2 | tobacco=0.599 maize=0.570 | 14 epochs, 1.0 min
+cnn random        seed 3 | tobacco=0.568 maize=0.527 | 19 epochs, 1.4 min
+cnn homology_t40  seed 1 | tobacco=0.524 maize=0.474 | 17 epochs, 1.3 min
+cnn homology_t40  seed 2 | tobacco=0.597 maize=0.575 | 20 epochs, 1.5 min
+cnn homology_t40  seed 3 | tobacco=0.552 maize=0.493 | 16 epochs, 1.2 min
+cnn homology_t60  seed 1 | tobacco=0.597 maize=0.580 | 18 epochs, 1.3 min
+cnn homology_t60  seed 2 | tobacco=0.619 maize=0.551 | 12 epochs, 0.9 min
+cnn homology_t60  seed 3 | tobacco=0.578 maize=0.514 | 15 epochs, 1.1 min
+
+######## CNN mean R2 (sd), bin = all
+                mean                                       std                             
+split   homology_t40 homology_t60 original random homology_t40 homology_t60 original random
+assay                                                                                      
+maize          0.514        0.548    0.549  0.546        0.053        0.033      NaN  0.022
+tobacco        0.558        0.598    0.624  0.579        0.037        0.021      NaN  0.017
+
+######## CNN original split, R2 by homology bin
+bin        all  no hit  <34 (chance)  34-40  40-60  60-100  >=100
+assay                                                            
+maize    0.549   0.522         0.544  0.594  0.591   0.503  0.581
+tobacco  0.624   0.584         0.607  0.622  0.660   0.649  0.611
+
+CNN EXP1 DONE terminators
+######## CNN Experiment 1: enhancers_nf | N=337,342 | assays=['light', 'dark', 'warm', 'cold', 'maize']
+cnn original      seed 0 | light=0.576 dark=0.579 warm=0.546 cold=0.500 maize=0.340 | 17 epochs, 9.3 min
+cnn random        seed 1 | light=0.589 dark=0.576 warm=0.557 cold=0.502 maize=0.308 | 14 epochs, 7.5 min
+cnn random        seed 2 | light=0.573 dark=0.554 warm=0.552 cold=0.492 maize=0.316 | 17 epochs, 9.1 min
+cnn random        seed 3 | light=0.574 dark=0.565 warm=0.547 cold=0.489 maize=0.311 | 20 epochs, 11.1 min
+cnn homology_t40  seed 1 | light=0.557 dark=0.552 warm=0.535 cold=0.478 maize=0.312 | 14 epochs, 8.4 min
+cnn homology_t40  seed 2 | light=0.559 dark=0.554 warm=0.534 cold=0.484 maize=0.327 | 15 epochs, 9.1 min
+cnn homology_t40  seed 3 | light=0.555 dark=0.551 warm=0.545 cold=0.476 maize=0.280 | 12 epochs, 8.7 min
+cnn homology_t60  seed 1 | light=0.541 dark=0.543 warm=0.529 cold=0.456 maize=0.270 | 9 epochs, 7.3 min
+cnn homology_t60  seed 2 | light=0.553 dark=0.531 warm=0.532 cold=0.477 maize=0.281 | 15 epochs, 10.2 min
+cnn homology_t60  seed 3 | light=0.562 dark=0.563 warm=0.546 cold=0.488 maize=0.318 | 16 epochs, 11.2 min
+
+######## CNN mean R2 (sd), bin = all
+              mean                                       std                             
+split homology_t40 homology_t60 original random homology_t40 homology_t60 original random
+assay                                                                                    
+cold         0.479        0.474    0.500  0.495        0.004        0.016      NaN  0.007
+dark         0.552        0.546    0.579  0.565        0.001        0.016      NaN  0.011
+light        0.557        0.552    0.576  0.579        0.002        0.011      NaN  0.009
+maize        0.306        0.290    0.340  0.312        0.024        0.025      NaN  0.004
+warm         0.538        0.536    0.546  0.552        0.006        0.009      NaN  0.005
+
+######## CNN original split, R2 by homology bin
+bin      all  no hit  <34 (chance)  34-40  40-60  60-100  >=100
+assay                                                          
+cold   0.500   0.351         0.494  0.502  0.490   0.476  0.572
+dark   0.579   0.446         0.576  0.603  0.551   0.575  0.611
+light  0.576   0.423         0.564  0.589  0.567   0.578  0.648
+maize  0.340   0.327         0.329  0.318  0.335   0.365  0.380
+warm   0.546   0.385         0.535  0.571  0.557   0.540  0.595
+
+CNN EXP1 DONE enhancers_nf

@@ -1,0 +1,62 @@
+nohup: ignoring input
+using blastn: /home/pradip/miniforge3/envs/hashfrag/bin/blastn
+blastn: 2.17.0+
+===== pilot_real =====
+2026-10-17 04:00:47 - hashFrag.blastn_module - INFO - Calling module...
+2026-10-17 04:00:47 - hashFrag.blastn_module - INFO - One FASTA files detected. Computing pairwise BLAST comparisons for all sequence-pairs...
+2026-10-17 04:00:47 - hashFrag.blastn_module - INFO - Generating reverse complement ref sequences...
+2026-10-17 04:00:48 - hashFrag.blastn_module - INFO - BLASTn output: 
+
+Building a new DB, current time: 10/17/2026 04:00:47
+New DB name:   /home/pradip/plantcre/data/homology/pilot_real.work/pilot_real.blastdb
+New DB title:  pilot_real
+Sequence type: Nucleotide
+Keep MBits: T
+Maximum file size: 3000000000B
+Adding sequences from FASTA; added 12000 sequences in 0.325034 seconds.
+
+
+
+2026-10-17 04:00:48 - hashFrag.blastn_module - INFO - BLAST DataBase construction finished and written to: /home/pradip/plantcre/data/homology/pilot_real.work/pilot_real.blastdb
+2026-10-17 04:02:51 - hashFrag.blastn_module - INFO - BLASTn process finished and written to: /home/pradip/plantcre/data/homology/pilot_real.work/pilot_real.blastn.out
+2026-10-17 04:02:51 - hashFrag.blastn_module - INFO - Module execution completed.
+
+
+real	2m4.447s
+user	12m59.140s
+sys	0m8.416s
+2026-10-17 04:02:59 - hashFrag.process_blast_results_module - INFO - Calling module...
+2026-10-17 04:03:01 - hashFrag.process_blast_results_module - INFO - Processed BLASTn results written to: pilot_real.work/pilot_real.processed.tsv
+2026-10-17 04:03:01 - hashFrag.process_blast_results_module - INFO - Module execution completed.
+
+912436 pilot_real.work/pilot_real.processed.tsv
+===== pilot_shuf =====
+2026-10-17 04:03:01 - hashFrag.blastn_module - INFO - Calling module...
+2026-10-17 04:03:01 - hashFrag.blastn_module - INFO - One FASTA files detected. Computing pairwise BLAST comparisons for all sequence-pairs...
+2026-10-17 04:03:01 - hashFrag.blastn_module - INFO - Generating reverse complement ref sequences...
+2026-10-17 04:03:02 - hashFrag.blastn_module - INFO - BLASTn output: 
+
+Building a new DB, current time: 10/17/2026 04:03:02
+New DB name:   /home/pradip/plantcre/data/homology/pilot_shuf.work/pilot_shuf.blastdb
+New DB title:  pilot_shuf
+Sequence type: Nucleotide
+Keep MBits: T
+Maximum file size: 3000000000B
+Adding sequences from FASTA; added 12000 sequences in 0.343378 seconds.
+
+
+
+2026-10-17 04:03:02 - hashFrag.blastn_module - INFO - BLAST DataBase construction finished and written to: /home/pradip/plantcre/data/homology/pilot_shuf.work/pilot_shuf.blastdb
+2026-10-17 04:04:09 - hashFrag.blastn_module - INFO - BLASTn process finished and written to: /home/pradip/plantcre/data/homology/pilot_shuf.work/pilot_shuf.blastn.out
+2026-10-17 04:04:09 - hashFrag.blastn_module - INFO - Module execution completed.
+
+
+real	1m7.682s
+user	8m59.208s
+sys	0m4.504s
+2026-10-17 04:04:09 - hashFrag.process_blast_results_module - INFO - Calling module...
+2026-10-17 04:04:11 - hashFrag.process_blast_results_module - INFO - Processed BLASTn results written to: pilot_shuf.work/pilot_shuf.processed.tsv
+2026-10-17 04:04:11 - hashFrag.process_blast_results_module - INFO - Module execution completed.
+
+545824 pilot_shuf.work/pilot_shuf.processed.tsv
+PILOT DONE

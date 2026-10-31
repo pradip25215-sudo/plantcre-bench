@@ -1,0 +1,46 @@
+nohup: ignoring input
+
+######## promoters: 76,728 rows; building 6-mers...
+[ntv2_100m L10] 6-mers explain 47.6% of embedding variance (held-out, alpha=1000)
+   leaf    K=0.483 E=0.435 E_hat=0.443 R=0.047 K+R=0.531 | gain over 6-mers=+0.048
+   proto   K=0.448 E=0.364 E_hat=0.395 R=0.045 K+R=0.497 | gain over 6-mers=+0.049
+[agront_1b L12] 6-mers explain 51.0% of embedding variance (held-out, alpha=1000)
+   leaf    K=0.483 E=0.530 E_hat=0.481 R=0.070 K+R=0.563 | gain over 6-mers=+0.080
+   proto   K=0.448 E=0.502 E_hat=0.448 R=0.081 K+R=0.543 | gain over 6-mers=+0.095
+
+######## terminators: 53,409 rows; building 6-mers...
+[ntv2_100m L10] 6-mers explain 43.9% of embedding variance (held-out, alpha=1000)
+   tobacco K=0.293 E=0.393 E_hat=0.258 R=0.194 K+R=0.477 | gain over 6-mers=+0.184
+   maize   K=0.425 E=0.366 E_hat=0.372 R=0.088 K+R=0.520 | gain over 6-mers=+0.094
+[agront_1b L12] 6-mers explain 49.5% of embedding variance (held-out, alpha=1000)
+   tobacco K=0.293 E=0.456 E_hat=0.294 R=0.196 K+R=0.491 | gain over 6-mers=+0.198
+   maize   K=0.425 E=0.462 E_hat=0.414 R=0.092 K+R=0.532 | gain over 6-mers=+0.107
+
+######## enhancers: 169,663 rows; building 6-mers...
+[ntv2_100m L10] 6-mers explain 50.2% of embedding variance (held-out, alpha=1000)
+   light   K=0.488 E=0.364 E_hat=0.424 R=0.007 K+R=0.496 | gain over 6-mers=+0.007
+   dark    K=0.536 E=0.375 E_hat=0.450 R=0.004 K+R=0.542 | gain over 6-mers=+0.006
+   warm    K=0.480 E=0.369 E_hat=0.427 R=0.007 K+R=0.487 | gain over 6-mers=+0.007
+   cold    K=0.414 E=0.304 E_hat=0.358 R=0.007 K+R=0.420 | gain over 6-mers=+0.006
+   maize   K=0.274 E=0.143 E_hat=0.200 R=0.011 K+R=0.286 | gain over 6-mers=+0.012
+[agront_1b L12] 6-mers explain 51.9% of embedding variance (held-out, alpha=1000)
+   light   K=0.489 E=0.432 E_hat=0.466 R=0.021 K+R=0.511 | gain over 6-mers=+0.022
+   dark    K=0.537 E=0.448 E_hat=0.507 R=0.012 K+R=0.552 | gain over 6-mers=+0.015
+   warm    K=0.481 E=0.439 E_hat=0.464 R=0.021 K+R=0.501 | gain over 6-mers=+0.020
+   cold    K=0.415 E=0.369 E_hat=0.396 R=0.020 K+R=0.437 | gain over 6-mers=+0.022
+   maize   K=0.273 E=0.204 E_hat=0.246 R=0.023 K+R=0.297 | gain over 6-mers=+0.024
+
+######## gain of the non-composition part over 6-mers (R2 of K+R minus R2 of K)
+model                agront_1b  ntv2_100m
+dataset     assay                        
+enhancers   cold         0.022      0.006
+            dark         0.015      0.006
+            light        0.022      0.007
+            maize        0.024      0.012
+            warm         0.020      0.007
+promoters   leaf         0.080      0.048
+            proto        0.095      0.049
+terminators maize        0.107      0.094
+            tobacco      0.198      0.184
+
+EXP2 DONE

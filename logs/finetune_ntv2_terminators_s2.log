@@ -1,0 +1,21 @@
+######## fine-tuning NT-v2-100M: terminators, seed 2
+  [terminators random s2] epoch 1: val loss 0.4204 (5.8 min)
+  [terminators random s2] epoch 2: val loss 0.3685 (5.8 min)
+  [terminators random s2] epoch 3: val loss 0.3567 (5.8 min)
+  [terminators random s2] epoch 4: val loss 0.3552 (5.8 min)
+terminators random        seed 2 tobacco test R2 = 0.697
+terminators random        seed 2 maize   test R2 = 0.613
+  [terminators homology_t40 s2] epoch 1: val loss 0.3987 (5.8 min)
+  [terminators homology_t40 s2] epoch 2: val loss 0.3554 (5.8 min)
+  [terminators homology_t40 s2] epoch 3: val loss 0.3545 (5.8 min)
+  [terminators homology_t40 s2] epoch 4: val loss 0.3638 (5.8 min)
+terminators homology_t40  seed 2 tobacco test R2 = 0.688
+terminators homology_t40  seed 2 maize   test R2 = 0.622
+  [terminators homology_t60 s2] epoch 1: val loss 0.4263 (5.8 min)
+  [terminators homology_t60 s2] epoch 2: val loss 0.3721 (5.8 min)
+  [terminators homology_t60 s2] epoch 3: val loss 0.3755 (5.8 min)
+  [terminators homology_t60 s2] epoch 4: val loss 0.3653 (5.8 min)
+terminators homology_t60  seed 2 tobacco test R2 = 0.669
+terminators homology_t60  seed 2 maize   test R2 = 0.582
+
+FINETUNE TERMINATORS DONE seed 2

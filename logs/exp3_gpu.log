@@ -1,0 +1,48 @@
+nohup: ignoring input
+[ntv2_100m] loading /data3/pradip/hf_cache/hub/models--InstaDeepAI--nucleotide-transformer-v2-100m-multi-species/snapshots/f34324c6fde36a4f635f0f1f06cac5d25acd6798
+[ntv2_100m] tokens changed per pair: median 2, max 4
+[agront_1b] loading /data3/pradip/hf_cache/hub/models--InstaDeepAI--agro-nucleotide-transformer-1b/snapshots/b0e1ea1f53a2bf5bb29f8eab7a7e553bf06c1ab1
+[agront_1b] tokens changed per pair: median 2, max 4
+
+######## zero-shot: delta Spearman
+condition            light   dark   warm   cold  maize
+model                                                 
+agront_1b zero-shot  0.007  0.027  0.042  0.025 -0.046
+ntv2_100m zero-shot  0.078  0.015  0.029  0.076 -0.066
+
+######## zero-shot: sign accuracy on clear effects
+condition            light  dark  warm  cold  maize
+model                                              
+agront_1b zero-shot   0.54  0.50  0.52  0.51   0.47
+ntv2_100m zero-shot   0.54  0.51  0.51  0.54   0.43
+
+ZEROSHOT DONE
+cnn init 1 (17 epochs) | delta rho: light=+0.508 dark=+0.551 warm=+0.428 cold=+0.492 maize=+0.325
+cnn init 2 (23 epochs) | delta rho: light=+0.471 dark=+0.488 warm=+0.399 cold=+0.462 maize=+0.343
+cnn init 3 (16 epochs) | delta rho: light=+0.504 dark=+0.544 warm=+0.414 cold=+0.498 maize=+0.309
+
+######## CNN delta_spearman
+condition        light   dark   warm   cold  maize
+model                                             
+cnn (mean of 3)  0.519  0.556  0.431  0.507  0.373
+cnn init 1       0.508  0.551  0.428  0.492  0.325
+cnn init 2       0.471  0.488  0.399  0.462  0.343
+cnn init 3       0.504  0.544  0.414  0.498  0.309
+
+######## CNN sign_acc_strong
+condition        light   dark   warm   cold  maize
+model                                             
+cnn (mean of 3)  0.824  0.859  0.744  0.811  0.823
+cnn init 1       0.838  0.866  0.772  0.827  0.750
+cnn init 2       0.806  0.855  0.724  0.786  0.776
+cnn init 3       0.815  0.832  0.728  0.802  0.766
+
+######## CNN wt_r2
+condition        light   dark   warm   cold  maize
+model                                             
+cnn (mean of 3)  0.666  0.696  0.657  0.670  0.328
+cnn init 1       0.645  0.678  0.644  0.653  0.301
+cnn init 2       0.620  0.643  0.609  0.619  0.275
+cnn init 3       0.646  0.666  0.633  0.653  0.282
+
+EXP3 CNN DONE
