@@ -62,10 +62,11 @@ checked on a pilot before the full run.
 | Figure 3 | `scripts/make_figures.py` | `figures/fig3_variants.{png,pdf}` |
 | Figure 4 | `scripts/make_figures.py` | `figures/fig4_wt_vs_delta.{png,pdf}` |
 | Figure S1 | `scripts/fig_s1_threshold.py` | `figures/figS1_threshold.{png,pdf}` |
-| Figure S2 | `scripts/make_diagrams.py` | `figures/figS2_workflow.{png,pdf,svg}` |
+| Figure S2 | `scripts/make_s2_icons.py` | `figures/figS2_workflow.{png,pdf,svg}` |
 | Figure S3 | `scripts/make_diagrams.py` | `figures/figS3_cnn.{png,pdf,svg}` |
 
-All of them read from `results/`, so the experiment scripts have to run first.
+Figures 1 to S1 read from `results/`, so the experiment scripts have to run first. S2 and S3 are
+drawings and need nothing but matplotlib.
 
 ## Results tables
 
